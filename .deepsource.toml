@@ -1,14 +1,26 @@
 version = 1
 
+# ======================
+# TypeScript Analyzer
+# ======================
 [[analyzers]]
-name = "typescript"
+name = "javascript"
 enabled = true
 
   [analyzers.meta]
   environment = "nodejs"
   dialect = "typescript"
 
-# Optional: testing coverage enable if needed
+# ======================
+# Optional: Secrets Analyzer
+# ======================
+[[analyzers]]
+name = "secrets"
+enabled = true
+
+# ======================
+# Prettier Formatter
+# ======================
 [[transformers]]
 name = "prettier"
 enabled = true
