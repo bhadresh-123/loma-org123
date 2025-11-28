@@ -1,0 +1,14 @@
+version = 1
+
+[[analyzers]]
+name = "typescript"
+enabled = true
+
+  [analyzers.meta]
+  environment = "nodejs"
+  dialect = "typescript"
+
+# Optional: testing coverage enable if needed
+[[transformers]]
+name = "prettier"
+enabled = true
