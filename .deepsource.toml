@@ -2,13 +2,10 @@ version = 1
 
 [[analyzers]]
 name = "typescript"
-enabled = true
 
   [analyzers.meta]
-  # Runtime/environment must be an array
-  runtime = ["nodejs"]
   dialect = "typescript"
+  runtime = ["nodejs"]
 
 [[transformers]]
 name = "prettier"
-enabled = true
