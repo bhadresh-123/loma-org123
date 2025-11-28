@@ -1,0 +1,1 @@
+export type NoteFormat = 'SOAP' | 'DAP' | 'BIRP' | 'GIRP' | 'PIRP' | 'Narrative';

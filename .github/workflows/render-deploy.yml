@@ -1,0 +1,71 @@
+name: Deploy to Render on PR Merge
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual deployment'
+        required: false
+        default: 'Manual deployment requested'
+
+jobs:
+  deploy:
+    name: Trigger Render Deployment
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Get commit information
+        id: commit
+        run: |
+          echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+          {
+            echo "message<<EOF"
+            git log -1 --pretty=%B
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+          echo "author=$(git log -1 --pretty=%an)" >> $GITHUB_OUTPUT
+      
+      - name: Trigger Render Deploy Hook
+        run: |
+          echo "🚀 Triggering deployment for commit: ${{ steps.commit.outputs.sha }}"
+          echo "📝 Commit message: ${{ steps.commit.outputs.message }}"
+          echo "👤 Author: ${{ steps.commit.outputs.author }}"
+          
+          # Call Render Deploy Hook
+          response=$(curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            --write-out "\n%{http_code}" \
+            --silent \
+            --output /dev/stderr)
+          
+          http_code=$(echo "$response" | tail -n1)
+          
+          if [ "$http_code" -ge 200 ] && [ "$http_code" -lt 300 ]; then
+            echo "✅ Deploy triggered successfully (HTTP $http_code)"
+          else
+            echo "❌ Deploy trigger failed (HTTP $http_code)"
+            exit 1
+          fi
+      
+      - name: Wait for deployment to start
+        run: |
+          echo "⏳ Waiting 30 seconds for deployment to initialize..."
+          sleep 30
+      
+      - name: Deployment notification
+        if: always()
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "✅ Deployment triggered successfully!"
+            echo "📊 Check deployment status at: https://dashboard.render.com"
+            echo "🔗 Commit: ${{ steps.commit.outputs.sha }}"
+          else
+            echo "❌ Deployment trigger failed!"
+            echo "Please check Render dashboard and GitHub secrets configuration."
+          fi
+

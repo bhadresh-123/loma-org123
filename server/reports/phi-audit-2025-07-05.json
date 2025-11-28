@@ -1,0 +1,147 @@
+{
+  "timestamp": "2025-07-05T02:06:35.420Z",
+  "tables": {
+    "users": {
+      "encrypted": 6,
+      "total": 8,
+      "details": [
+        {
+          "field": "ssn",
+          "status": "ENCRYPTED",
+          "records": 2
+        },
+        {
+          "field": "email",
+          "status": "ENCRYPTED",
+          "records": 3
+        },
+        {
+          "field": "personalphone",
+          "status": "ERROR",
+          "error": "column \"personalphone_encrypted\" does not exist"
+        },
+        {
+          "field": "personalemail",
+          "status": "ERROR",
+          "error": "column \"personalemail_encrypted\" does not exist"
+        },
+        {
+          "field": "date_of_birth",
+          "status": "ENCRYPTED",
+          "records": 2
+        },
+        {
+          "field": "birth_city",
+          "status": "ENCRYPTED",
+          "records": 2
+        },
+        {
+          "field": "birth_state",
+          "status": "ENCRYPTED",
+          "records": 2
+        },
+        {
+          "field": "birth_country",
+          "status": "ENCRYPTED",
+          "records": 2
+        }
+      ]
+    },
+    "user_profiles": {
+      "encrypted": 7,
+      "total": 8,
+      "details": [
+        {
+          "field": "address",
+          "status": "NO_DATA",
+          "records": 0
+        },
+        {
+          "field": "personal_phone",
+          "status": "ENCRYPTED",
+          "records": 3
+        },
+        {
+          "field": "personal_email",
+          "status": "ENCRYPTED",
+          "records": 3
+        },
+        {
+          "field": "ssn",
+          "status": "ENCRYPTED",
+          "records": 3
+        },
+        {
+          "field": "date_of_birth",
+          "status": "ENCRYPTED",
+          "records": 1
+        },
+        {
+          "field": "birth_city",
+          "status": "ENCRYPTED",
+          "records": 1
+        },
+        {
+          "field": "birth_state",
+          "status": "ENCRYPTED",
+          "records": 1
+        },
+        {
+          "field": "birth_country",
+          "status": "ENCRYPTED",
+          "records": 1
+        }
+      ]
+    },
+    "clients": {
+      "encrypted": 6,
+      "total": 6,
+      "details": [
+        {
+          "field": "email",
+          "status": "ENCRYPTED",
+          "records": 74
+        },
+        {
+          "field": "phone",
+          "status": "ENCRYPTED",
+          "records": 67
+        },
+        {
+          "field": "notes",
+          "status": "ENCRYPTED",
+          "records": 54
+        },
+        {
+          "field": "hometown",
+          "status": "ENCRYPTED",
+          "records": 54
+        },
+        {
+          "field": "race",
+          "status": "ENCRYPTED",
+          "records": 66
+        },
+        {
+          "field": "pronouns",
+          "status": "ENCRYPTED",
+          "records": 54
+        }
+      ]
+    },
+    "sessions": {
+      "encrypted": 1,
+      "total": 1,
+      "details": [
+        {
+          "field": "notes",
+          "status": "ENCRYPTED",
+          "records": 5
+        }
+      ]
+    }
+  },
+  "overallScore": 87,
+  "violations": [],
+  "recommendations": []
+}

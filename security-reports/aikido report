@@ -1,0 +1,879 @@
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Loma-Health Report by Aikido Mon Nov 03 2025
+HIPAA compliance overview
+1.3.1 Security Standards: General
+Requirements
+No clouds
+monitored
+40%
+Type Encrypts data at rest Docker image repository not encrypted at rest Status
+complying
+SNS topics are not encrypted at rest complying
+Elasticsearch domain is not encrypted at rest complying
+SQS queue data is not encrypted complying
+AWS ElastiCache Redis cluster should have encryption at rest enabled complying
+Amazon EKS Clusters should have secrets encryption enabled complying
+API Gateway REST API caching is unencrypted complying
+RDS instance data is encrypted unknown
+EBS volumes are encrypted unknown
+Virtual Machines have confidential computing enabled Databases have encryption at rest unknown
+unknown
+KMS keys have key rotation enabled unknown
+CloudWatch log groups are encrypted with a customer managed KMS key unknown
+API Gateway REST API caching is encrypted unknown
+EFS file systems are encrypted at rest unknown
+https://app.aikido.dev/reports/hipaa 1/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+CloudTrail S3 buckets are encrypted with a customer managed KMS key Default EBS volume encryption is enabled in all regions AKS clusters have encryption at rest enabled for etcd secrets unknown
+unknown
+unknown
+AKS clusters have the Key Vault Secret Store CSI driver enabled unknown
+Azure SQL Databases have Transparent Data Encryption enabled KMS keys have key rotation enabled unknown
+unknown
+Type Enforces safe SSL protocol usage Cloud SQL db not enforcing SSL {PHP } SSL certificate verification turned off during requests Status
+complying
+complying
+{PY } SSL certificate verification turned off during requests {JS } NodeJS talks to database without encryption {.NET } Deprecated SSL Protocol Usage Detected complying
+complying
+complying
+Type Enforces HTTPS traffic to cloud instances Load Balancers only accept HTTPS connections Status
+unknown
+Cloud functions require HTTPS invocations unknown
+App services require HTTPS only unknown
+LoadBalancers require HTTPS only traffic Load balancer SSL redirect enabled unknown
+unknown
+Type Enforces latest TLS version Status
+https://app.aikido.dev/reports/hipaa 2/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Load balancers enforce HTTPS unknown
+CloudFront distributions enforce HTTPS unknown
+No expired server certificates in AWS IAM unknown
+Application Gateways enforce HTTPS traffic only unknown
+Application Gateways require TLS 1.2 or higher unknown
+Load balancers use latest TLS1.3 version unknown
+SSL Certificates are automatically renewed unknown
+Load balancers have valid certificates unknown
+CloudFront distributions requires up-to-date TLS Protocols unknown
+Web Apps use an up-to-date TLS version unknown
+Azure Storage Accounts enforces latest TLS version unknown
+Azure Cache for Redis instances require TLS connections unknown
+Event Grid Topics enforce secure TLS connections unknown
+Event Grid Domains enforce secure TLS connections unknown
+Service Bus Namespaces enforce secure TLS connections unknown
+Event Hubs Namespaces enforce secure TLS connections unknown
+Elasticsearch domain might have outdated TLS version complying
+Load balancer is using outdated TLS policy complying
+Azure Storage Accounts does not enforce latest TLS version complying
+API Gateway stages are not using TLS 1.2 or higher complying
+https://app.aikido.dev/reports/hipaa 3/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Type Prevents abuse of cookies {PHP } Laravel cookies can be sent unencrypted {JA V A } Cookie missing HttpOnly flag Type Uses up to date cryptography libraries {.NET } Use of broken or outdated encryption {PY } Using deprecated cryptographic library {SWIFT } Usage of deprecated or broken encryption detected {JA V A } Use of broken or outdated encryption {PY } Hashes should include an unpredictable salt Status
+complying
+complying
+Status
+complying
+complying
+complying
+complying
+complying
+1.4.1 Administrative Safeguards: Security
+management process
+No clouds
+monitored
+3%
+Type Enabled security logging for cloud instances Amazon EKS Clusters should have control plane logging enabled VPC Flow Logs are enabled Logging and alerts are enabled for Project Ownership assignments Storage Permissions logging is enabled Audit Configuration logging is enabled VPC Firewall has Rule logging enabled Logging is enabled for resources Status
+complying
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+https://app.aikido.dev/reports/hipaa 4/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+API Gateway REST API stages have X-Ray tracing enabled API Gateway stages have access logging enabled API Gateway REST API stages do not log full data traces CloudTrail trails have log file validation enabled CloudTrail S3 buckets are encrypted with a customer managed KMS key AWS Config recorder is enabled for all supported resources in all regions Azure SQL Servers have auditing enabled Type Has enabled threat detection CloudTrail is enabled in active regions Activity Log alerts are enabled CloudFront distributions have access logging enabled Load balancer access logging is enabled CloudWatch alarms have enabled actions configured CloudWatch log groups are encrypted with a customer managed KMS key CloudWatch log metric filter and alarm are set for changes to VPC NACLs CloudWatch log metric filter and alarm are set for changes to VPC network gateways CloudWatch log metric filter and alarm are set for CloudTrail configuration changes CloudWatch log metric filter and alarm are set for rejected connections in VPC Flow
+Logs
+CloudTrail S3 buckets have access logging enabled CloudTrail trails log S3 object-level write events for all S3 buckets unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+Status
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+https://app.aikido.dev/reports/hipaa 5/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+CloudTrail trails log S3 object-level read events for all S3 buckets unknown
+Alerting policies have a notification channel configured unknown
+Amazon GuardDuty is enabled unknown
+No suspicious activity detected for cloud users unknown
+IAM policies avoid granting full administrative access unknown
+Access Analyzer is enabled in all regions where necessary unknown
+Type Configured SLAs to resolve issues Status
+Configure SLAs failing
+1.4.4 Administrative Safeguards: Information
+access management
+No clouds
+monitored
+12%
+Type Requires MFA for access to cloud resources Status
+Root account has MFA enabled unknown
+Admin users have MFA enabled unknown
+Users are logging in securely unknown
+IAM users have MFA enabled unknown
+Type Applies the least privilege principle for cloud resource Privileged IAM users have strict access permissions Azure Virtual Machines are not accessible via passwords Users are logging in securely Status
+unknown
+unknown
+unknown
+https://app.aikido.dev/reports/hipaa 6/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Dangerous Impersonate permission given to ServiceAccount or node complying
+ServiceAccount or node can read all secrets complying
+AKS local admin account is still enabled complying
+S3 Buckets have strict write access permissions unknown
+Lambda functions have strict access permissions unknown
+EC2 instances have minimal execution roles unknown
+Elastic Beanstalk environments have strict access permissions unknown
+Access Approval is enabled for the project unknown
+Project-wide SSH keys are blocked unknown
+VM instances have strict access permissions unknown
+No user has both the Service Account User and Service Account Admin role unknown
+Kubernetes pods are isolated unknown
+No instance uses the default service account unknown
+Service accounts have strict access permissions unknown
+App Services have strict SCM Site access restrictions unknown
+Container registries have no admin user enabled unknown
+Droplet firewall set up unknown
+EventBridge bus access is restricted to trusted accounts unknown
+IAM role has restricted assumption permissions unknown
+AKS clusters have Kubernetes RBAC enabled unknown
+https://app.aikido.dev/reports/hipaa 7/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Event Grid Topics use Microsoft Entra ID authentication unknown
+Event Grid Domains use Microsoft Entra ID authentication unknown
+Service Bus Namespaces use Microsoft Entra ID authentication only unknown
+Event Hubs Namespaces use Microsoft Entra ID authentication only unknown
+GKE clusters have the Kubernetes Dashboard disabled unknown
+Compute instances have OS Login enabled Pod exec permissions are restricted unknown
+unknown
+There are no roles with delete capabilities unknown
+Applications credentials in configuration files unknown
+No containers with root privileges Workloads do not allow privilege escalation No sensitive host paths are mounted unknown
+unknown
+unknown
+Type Applies the least privilege principle for cloud users Only relevant IAM credentials are used Status
+unknown
+Users are only allowed to use corporate emails Security contact information is set unknown
+unknown
+IAM users rotate access keys regularly unknown
+Only active users have console access unknown
+IAM password policy enforces a minimum length of 14 characters or greater unknown
+Each IAM user has only one active access key unknown
+https://app.aikido.dev/reports/hipaa 8/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+IAM users receive permissions only through groups IAM credentials all in use within the last 45 days AKS clusters have Microsoft Entra ID integration enabled unknown
+unknown
+unknown
+AKS clusters have Azure RBAC for Kubernetes Authorization enabled AKS clusters have local accounts disabled unknown
+unknown
+Type Applies the least privilege principle to cloud resources Status
+Firewall rule prevents SSH access from anywhere unknown
+Databases only allows trusted connections unknown
+Droplet prevent SSH from anywhere unknown
+Firewall rules allow SSH from any public IP complying
+S3 Buckets should have block public access globally Kubernetes dashboard might be deployed Azure Cognitive Services allows public network access complying
+complying
+complying
+Azure Key Vault allows public network access complying
+AKS API server does not limit access by IP ranges complying
+Azure Storage Account allow public access complying
+Azure Storage blobs do not restrict public access for nested items complying
+Amazon EKS Clusters public endpoints should not allow traffic from any IP complying
+AWS EKS Node groups have implicit SSH access from any IP complying
+API Gateway endpoints do not require an API key or authorization complying
+https://app.aikido.dev/reports/hipaa 9/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+S3 bucket grants public access to all contents complying
+{GO } Profiling endpoint automatically exposed on /debug/pprof complying
+Security group has strict ingress rules unknown
+S3 Buckets have proper access rules unknown
+ECR repositories have strict access permissions unknown
+RDS instances are not publicly accessible unknown
+SQS queues have strict access permissions unknown
+RDS instance snapshots are protected unknown
+Lambda functions have strict access policies unknown
+Default VPC does not allow any inbound traffic unknown
+No unused security groups are present unknown
+EKS Clusters use private access endpoint for Kubernetes API server unknown
+Security group has strict ingress rules for Docker API access unknown
+Security group has strict ingress rules for RDP access unknown
+Security group has strict ingress rules for CUPS access unknown
+Security group has strict ingress rules for ClickHouse access unknown
+Security group has strict ingress rules for Grafana access unknown
+SQL instances have strict access permission unknown
+KMS keys have strict access permissions unknown
+SQL instance root user has strict access permissions unknown
+https://app.aikido.dev/reports/hipaa 10/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+SQL instances are not publicly accessible unknown
+Cloud functions are not publicly accessible unknown
+Kubernetes master endpoint is not publicly available unknown
+Firewall rule prevents SSH access from anywhere unknown
+Firewall rule prevents RDP access from anywhere unknown
+Storage Buckets have proper access rules unknown
+Cloud functions have strict access policies unknown
+Firewall rule prevents Docker API access from anywhere unknown
+Access to BigQuery datasets are restricted unknown
+Blob containers have stricta access permissions unknown
+Cosmos DB is not publicly accessible unknown
+Key Vaults have strict access permission rules unknown
+SQL Servers are not publicly accessible unknown
+Azure Kubernetes cluster are private unknown
+Azure Storage Account restricts access by network unknown
+Firewall rule prevents SSH access from anywhere unknown
+Firewall rule prevents RDP access from anywhere unknown
+Firewall rule prevents FTP access from anywhere unknown
+Firewall rule prevents Elastic Search access from anywhere unknown
+Firewall rule prevents Docker API access from anywhere unknown
+https://app.aikido.dev/reports/hipaa 11/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+EBS snapshots are shared securely or kept private Redshift clusters are isolated from the public internet Redshift clusters restrict inbound traffic to trusted sources SNS topics are restricted to trusted principals OpenSearch domains are isolated from public access S3 bucket has all block public access options enabled S3 bucket has block_public_acls enabled S3 public access is blocked at the account level VPC security groups do not allow unrestricted ingress to all ports and protocols VPC security groups restrict public ingress to port 23 VPC security groups restrict public ingress to port 2379 VPC security groups restrict public ingress to port 3000 VPC security groups restrict public ingress to port 5500 VPC security groups restrict public ingress to port 5800 API Gateway endpoints require an API key or authorization Azure Container Registries restrict access to trusted networks Azure Container Registries have anonymous pull disabled Firewall rules do not allow unrestricted ingress to all ports and protocols Firewall rules restrict public ingress to port 23 Firewall rules restrict public ingress to port 2379 unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+https://app.aikido.dev/reports/hipaa 12/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Firewall rules restrict public ingress to port 3000 Firewall rules restrict public ingress to port 5500 Firewall rules restrict public ingress to port 5800 Storage buckets have public access prevention enabled No sensitive interfaces are exposed 1.4.5 Administrative Safeguards: Security
+awareness and training
+No clouds
+monitored
+3%
+Type Enabled security logging for cloud instances Amazon EKS Clusters should have control plane logging enabled VPC Flow Logs are enabled Logging and alerts are enabled for Project Ownership assignments Storage Permissions logging is enabled Audit Configuration logging is enabled VPC Firewall has Rule logging enabled Logging is enabled for resources API Gateway REST API stages have X-Ray tracing enabled API Gateway stages have access logging enabled API Gateway REST API stages do not log full data traces CloudTrail trails have log file validation enabled CloudTrail S3 buckets are encrypted with a customer managed KMS key unknown
+unknown
+unknown
+unknown
+unknown
+Status
+complying
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+https://app.aikido.dev/reports/hipaa 13/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+AWS Config recorder is enabled for all supported resources in all regions unknown
+Azure SQL Servers have auditing enabled unknown
+Type Has enabled threat detection Status
+CloudTrail is enabled in active regions unknown
+Activity Log alerts are enabled unknown
+CloudFront distributions have access logging enabled unknown
+Load balancer access logging is enabled unknown
+CloudWatch alarms have enabled actions configured unknown
+CloudWatch log groups are encrypted with a customer managed KMS key unknown
+CloudWatch log metric filter and alarm are set for changes to VPC NACLs unknown
+CloudWatch log metric filter and alarm are set for changes to VPC network gateways unknown
+CloudWatch log metric filter and alarm are set for CloudTrail configuration changes unknown
+CloudWatch log metric filter and alarm are set for rejected connections in VPC Flow
+unknown
+Logs
+CloudTrail S3 buckets have access logging enabled unknown
+CloudTrail trails log S3 object-level write events for all S3 buckets unknown
+CloudTrail trails log S3 object-level read events for all S3 buckets unknown
+Alerting policies have a notification channel configured unknown
+Amazon GuardDuty is enabled unknown
+No suspicious activity detected for cloud users unknown
+IAM policies avoid granting full administrative access unknown
+https://app.aikido.dev/reports/hipaa 14/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Access Analyzer is enabled in all regions where necessary unknown
+1.4.7 Administrative Safeguards: Contingency
+plan
+No clouds
+monitored
+11%
+Type Has backups for stateful cloud resources Status
+RDS instances have backups enabled unknown
+RDS instance snapshots are protected unknown
+DynamoDB tables have point-in-time recovery enabled Databases have automated backups enabled Web Apps have backups enabled Databases have automated backups enabled S3 buckets have replication enabled unknown
+unknown
+unknown
+unknown
+unknown
+DynamoDB backups are off complying
+Type Has cross account backups enabled Cross account backups are enabled Status
+unknown
+1.6.1 Technical Safeguards: Access control No clouds monitored 12%
+Type Requires MFA for access to cloud resources Root account has MFA enabled Status
+unknown
+Admin users have MFA enabled unknown
+https://app.aikido.dev/reports/hipaa 15/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Users are logging in securely unknown
+IAM users have MFA enabled unknown
+Type Applies the least privilege principle for cloud resource Privileged IAM users have strict access permissions Azure Virtual Machines are not accessible via passwords Users are logging in securely Dangerous Impersonate permission given to ServiceAccount or node Status
+unknown
+unknown
+unknown
+complying
+ServiceAccount or node can read all secrets complying
+AKS local admin account is still enabled complying
+S3 Buckets have strict write access permissions unknown
+Lambda functions have strict access permissions EC2 instances have minimal execution roles unknown
+unknown
+Elastic Beanstalk environments have strict access permissions Access Approval is enabled for the project Project-wide SSH keys are blocked VM instances have strict access permissions unknown
+unknown
+unknown
+unknown
+No user has both the Service Account User and Service Account Admin role unknown
+Kubernetes pods are isolated unknown
+No instance uses the default service account unknown
+Service accounts have strict access permissions unknown
+https://app.aikido.dev/reports/hipaa 16/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+App Services have strict SCM Site access restrictions unknown
+Container registries have no admin user enabled unknown
+Droplet firewall set up unknown
+EventBridge bus access is restricted to trusted accounts unknown
+IAM role has restricted assumption permissions unknown
+AKS clusters have Kubernetes RBAC enabled unknown
+Event Grid Topics use Microsoft Entra ID authentication unknown
+Event Grid Domains use Microsoft Entra ID authentication unknown
+Service Bus Namespaces use Microsoft Entra ID authentication only unknown
+Event Hubs Namespaces use Microsoft Entra ID authentication only unknown
+GKE clusters have the Kubernetes Dashboard disabled unknown
+Compute instances have OS Login enabled unknown
+Pod exec permissions are restricted unknown
+There are no roles with delete capabilities unknown
+Applications credentials in configuration files unknown
+No containers with root privileges unknown
+Workloads do not allow privilege escalation unknown
+No sensitive host paths are mounted unknown
+Type Applies the least privilege principle for cloud users Only relevant IAM credentials are used Status
+unknown
+https://app.aikido.dev/reports/hipaa 17/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Users are only allowed to use corporate emails Security contact information is set IAM users rotate access keys regularly Only active users have console access IAM password policy enforces a minimum length of 14 characters or greater Each IAM user has only one active access key IAM users receive permissions only through groups IAM credentials all in use within the last 45 days AKS clusters have Microsoft Entra ID integration enabled AKS clusters have Azure RBAC for Kubernetes Authorization enabled unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+AKS clusters have local accounts disabled unknown
+Type Applies the least privilege principle to cloud resources Status
+Firewall rule prevents SSH access from anywhere unknown
+Databases only allows trusted connections unknown
+Droplet prevent SSH from anywhere unknown
+Firewall rules allow SSH from any public IP complying
+S3 Buckets should have block public access globally complying
+Kubernetes dashboard might be deployed complying
+Azure Cognitive Services allows public network access Azure Key Vault allows public network access complying
+complying
+https://app.aikido.dev/reports/hipaa 18/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+AKS API server does not limit access by IP ranges complying
+Azure Storage Account allow public access complying
+Azure Storage blobs do not restrict public access for nested items complying
+Amazon EKS Clusters public endpoints should not allow traffic from any IP complying
+AWS EKS Node groups have implicit SSH access from any IP complying
+API Gateway endpoints do not require an API key or authorization complying
+S3 bucket grants public access to all contents complying
+{GO } Profiling endpoint automatically exposed on /debug/pprof complying
+Security group has strict ingress rules unknown
+S3 Buckets have proper access rules unknown
+ECR repositories have strict access permissions unknown
+RDS instances are not publicly accessible unknown
+SQS queues have strict access permissions unknown
+RDS instance snapshots are protected Lambda functions have strict access policies Default VPC does not allow any inbound traffic unknown
+unknown
+unknown
+No unused security groups are present unknown
+EKS Clusters use private access endpoint for Kubernetes API server unknown
+Security group has strict ingress rules for Docker API access unknown
+Security group has strict ingress rules for RDP access unknown
+https://app.aikido.dev/reports/hipaa 19/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Security group has strict ingress rules for CUPS access unknown
+Security group has strict ingress rules for ClickHouse access unknown
+Security group has strict ingress rules for Grafana access unknown
+SQL instances have strict access permission unknown
+KMS keys have strict access permissions unknown
+SQL instance root user has strict access permissions unknown
+SQL instances are not publicly accessible unknown
+Cloud functions are not publicly accessible unknown
+Kubernetes master endpoint is not publicly available unknown
+Firewall rule prevents SSH access from anywhere unknown
+Firewall rule prevents RDP access from anywhere unknown
+Storage Buckets have proper access rules unknown
+Cloud functions have strict access policies unknown
+Firewall rule prevents Docker API access from anywhere unknown
+Access to BigQuery datasets are restricted unknown
+Blob containers have stricta access permissions unknown
+Cosmos DB is not publicly accessible unknown
+Key Vaults have strict access permission rules unknown
+SQL Servers are not publicly accessible unknown
+Azure Kubernetes cluster are private unknown
+https://app.aikido.dev/reports/hipaa 20/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Azure Storage Account restricts access by network Firewall rule prevents SSH access from anywhere Firewall rule prevents RDP access from anywhere Firewall rule prevents FTP access from anywhere Firewall rule prevents Elastic Search access from anywhere Firewall rule prevents Docker API access from anywhere EBS snapshots are shared securely or kept private Redshift clusters are isolated from the public internet Redshift clusters restrict inbound traffic to trusted sources SNS topics are restricted to trusted principals OpenSearch domains are isolated from public access S3 bucket has all block public access options enabled S3 bucket has block_public_acls enabled S3 public access is blocked at the account level VPC security groups do not allow unrestricted ingress to all ports and protocols VPC security groups restrict public ingress to port 23 VPC security groups restrict public ingress to port 2379 VPC security groups restrict public ingress to port 3000 VPC security groups restrict public ingress to port 5500 VPC security groups restrict public ingress to port 5800 unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+https://app.aikido.dev/reports/hipaa 21/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+API Gateway endpoints require an API key or authorization Azure Container Registries restrict access to trusted networks Azure Container Registries have anonymous pull disabled Firewall rules do not allow unrestricted ingress to all ports and protocols Firewall rules restrict public ingress to port 23 Firewall rules restrict public ingress to port 2379 Firewall rules restrict public ingress to port 3000 Firewall rules restrict public ingress to port 5500 Firewall rules restrict public ingress to port 5800 Storage buckets have public access prevention enabled No sensitive interfaces are exposed 1.6.2 Technical Safeguards: Audit controls No clouds monitored 3%
+Type Enabled security logging for cloud instances Amazon EKS Clusters should have control plane logging enabled VPC Flow Logs are enabled Logging and alerts are enabled for Project Ownership assignments Storage Permissions logging is enabled Audit Configuration logging is enabled VPC Firewall has Rule logging enabled unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+Status
+complying
+unknown
+unknown
+unknown
+unknown
+unknown
+https://app.aikido.dev/reports/hipaa 22/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Logging is enabled for resources API Gateway REST API stages have X-Ray tracing enabled API Gateway stages have access logging enabled API Gateway REST API stages do not log full data traces CloudTrail trails have log file validation enabled CloudTrail S3 buckets are encrypted with a customer managed KMS key AWS Config recorder is enabled for all supported resources in all regions Azure SQL Servers have auditing enabled Type Has enabled threat detection CloudTrail is enabled in active regions Activity Log alerts are enabled CloudFront distributions have access logging enabled Load balancer access logging is enabled CloudWatch alarms have enabled actions configured CloudWatch log groups are encrypted with a customer managed KMS key CloudWatch log metric filter and alarm are set for changes to VPC NACLs CloudWatch log metric filter and alarm are set for changes to VPC network gateways CloudWatch log metric filter and alarm are set for CloudTrail configuration changes CloudWatch log metric filter and alarm are set for rejected connections in VPC Flow
+Logs
+CloudTrail S3 buckets have access logging enabled unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+Status
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+https://app.aikido.dev/reports/hipaa 23/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+CloudTrail trails log S3 object-level write events for all S3 buckets unknown
+CloudTrail trails log S3 object-level read events for all S3 buckets unknown
+Alerting policies have a notification channel configured unknown
+Amazon GuardDuty is enabled unknown
+No suspicious activity detected for cloud users unknown
+IAM policies avoid granting full administrative access unknown
+Access Analyzer is enabled in all regions where necessary unknown
+1.6.3 Technical Safeguards: Integrity No clouds monitored 24%
+Type Encrypts data at rest Status
+Docker image repository not encrypted at rest complying
+SNS topics are not encrypted at rest complying
+Elasticsearch domain is not encrypted at rest complying
+SQS queue data is not encrypted complying
+AWS ElastiCache Redis cluster should have encryption at rest enabled complying
+Amazon EKS Clusters should have secrets encryption enabled complying
+API Gateway REST API caching is unencrypted complying
+RDS instance data is encrypted unknown
+EBS volumes are encrypted unknown
+Virtual Machines have confidential computing enabled unknown
+https://app.aikido.dev/reports/hipaa 24/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Databases have encryption at rest KMS keys have key rotation enabled CloudWatch log groups are encrypted with a customer managed KMS key unknown
+unknown
+unknown
+API Gateway REST API caching is encrypted EFS file systems are encrypted at rest CloudTrail S3 buckets are encrypted with a customer managed KMS key Default EBS volume encryption is enabled in all regions AKS clusters have encryption at rest enabled for etcd secrets unknown
+unknown
+unknown
+unknown
+unknown
+AKS clusters have the Key Vault Secret Store CSI driver enabled unknown
+Azure SQL Databases have Transparent Data Encryption enabled unknown
+KMS keys have key rotation enabled unknown
+Type Applies the least privilege principle to cloud resources Status
+Firewall rules allow SSH from any public IP complying
+S3 Buckets should have block public access globally complying
+Kubernetes dashboard might be deployed complying
+Azure Cognitive Services allows public network access Azure Key Vault allows public network access AKS API server does not limit access by IP ranges complying
+complying
+complying
+Azure Storage Account allow public access Azure Storage blobs do not restrict public access for nested items complying
+complying
+https://app.aikido.dev/reports/hipaa 25/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Amazon EKS Clusters public endpoints should not allow traffic from any IP complying
+AWS EKS Node groups have implicit SSH access from any IP complying
+API Gateway endpoints do not require an API key or authorization complying
+S3 bucket grants public access to all contents complying
+{GO } Profiling endpoint automatically exposed on /debug/pprof Security group has strict ingress rules complying
+unknown
+S3 Buckets have proper access rules unknown
+ECR repositories have strict access permissions unknown
+RDS instances are not publicly accessible unknown
+SQS queues have strict access permissions unknown
+RDS instance snapshots are protected unknown
+Lambda functions have strict access policies unknown
+Default VPC does not allow any inbound traffic unknown
+No unused security groups are present unknown
+EKS Clusters use private access endpoint for Kubernetes API server unknown
+Security group has strict ingress rules for Docker API access unknown
+Security group has strict ingress rules for RDP access unknown
+Security group has strict ingress rules for CUPS access unknown
+Security group has strict ingress rules for ClickHouse access unknown
+Security group has strict ingress rules for Grafana access unknown
+https://app.aikido.dev/reports/hipaa 26/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+SQL instances have strict access permission unknown
+KMS keys have strict access permissions unknown
+SQL instance root user has strict access permissions unknown
+SQL instances are not publicly accessible unknown
+Cloud functions are not publicly accessible unknown
+Kubernetes master endpoint is not publicly available unknown
+Firewall rule prevents SSH access from anywhere unknown
+Firewall rule prevents RDP access from anywhere unknown
+Storage Buckets have proper access rules Cloud functions have strict access policies unknown
+unknown
+Firewall rule prevents Docker API access from anywhere unknown
+Access to BigQuery datasets are restricted unknown
+Blob containers have stricta access permissions unknown
+Cosmos DB is not publicly accessible unknown
+Key Vaults have strict access permission rules unknown
+SQL Servers are not publicly accessible unknown
+Azure Kubernetes cluster are private unknown
+Azure Storage Account restricts access by network unknown
+Firewall rule prevents SSH access from anywhere unknown
+Firewall rule prevents RDP access from anywhere unknown
+https://app.aikido.dev/reports/hipaa 27/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Firewall rule prevents FTP access from anywhere Firewall rule prevents Elastic Search access from anywhere Firewall rule prevents Docker API access from anywhere Firewall rule prevents SSH access from anywhere Databases only allows trusted connections Droplet prevent SSH from anywhere EBS snapshots are shared securely or kept private Redshift clusters are isolated from the public internet Redshift clusters restrict inbound traffic to trusted sources SNS topics are restricted to trusted principals OpenSearch domains are isolated from public access S3 bucket has all block public access options enabled S3 bucket has block_public_acls enabled S3 public access is blocked at the account level VPC security groups do not allow unrestricted ingress to all ports and protocols VPC security groups restrict public ingress to port 23 VPC security groups restrict public ingress to port 2379 VPC security groups restrict public ingress to port 3000 VPC security groups restrict public ingress to port 5500 VPC security groups restrict public ingress to port 5800 unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+https://app.aikido.dev/reports/hipaa 28/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+API Gateway endpoints require an API key or authorization Azure Container Registries restrict access to trusted networks Azure Container Registries have anonymous pull disabled Firewall rules do not allow unrestricted ingress to all ports and protocols Firewall rules restrict public ingress to port 23 Firewall rules restrict public ingress to port 2379 Firewall rules restrict public ingress to port 3000 Firewall rules restrict public ingress to port 5500 Firewall rules restrict public ingress to port 5800 Storage buckets have public access prevention enabled No sensitive interfaces are exposed Type Uses up to date cryptography libraries {.NET } Use of broken or outdated encryption {PY } Using deprecated cryptographic library {SWIFT } Usage of deprecated or broken encryption detected {JA V A } Use of broken or outdated encryption {PY } Hashes should include an unpredictable salt 1.6.4 Technical Safeguards: Person or entity
+authentication
+No clouds
+monitored
+12%
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+Status
+complying
+complying
+complying
+complying
+complying
+https://app.aikido.dev/reports/hipaa 29/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Type Applies the least privilege principle for cloud resource Status
+Dangerous Impersonate permission given to ServiceAccount or node complying
+ServiceAccount or node can read all secrets complying
+AKS local admin account is still enabled complying
+S3 Buckets have strict write access permissions unknown
+Lambda functions have strict access permissions unknown
+EC2 instances have minimal execution roles unknown
+Elastic Beanstalk environments have strict access permissions unknown
+Access Approval is enabled for the project unknown
+Project-wide SSH keys are blocked unknown
+VM instances have strict access permissions unknown
+No user has both the Service Account User and Service Account Admin role unknown
+Kubernetes pods are isolated unknown
+No instance uses the default service account unknown
+Service accounts have strict access permissions unknown
+App Services have strict SCM Site access restrictions unknown
+Container registries have no admin user enabled unknown
+Droplet firewall set up unknown
+EventBridge bus access is restricted to trusted accounts unknown
+IAM role has restricted assumption permissions unknown
+https://app.aikido.dev/reports/hipaa 30/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+AKS clusters have Kubernetes RBAC enabled unknown
+Event Grid Topics use Microsoft Entra ID authentication unknown
+Event Grid Domains use Microsoft Entra ID authentication unknown
+Service Bus Namespaces use Microsoft Entra ID authentication only unknown
+Event Hubs Namespaces use Microsoft Entra ID authentication only unknown
+GKE clusters have the Kubernetes Dashboard disabled unknown
+Compute instances have OS Login enabled unknown
+Pod exec permissions are restricted unknown
+There are no roles with delete capabilities unknown
+Applications credentials in configuration files unknown
+No containers with root privileges unknown
+Workloads do not allow privilege escalation unknown
+No sensitive host paths are mounted unknown
+Type Requires MFA for access to cloud resources Status
+Privileged IAM users have strict access permissions unknown
+Azure Virtual Machines are not accessible via passwords Users are logging in securely unknown
+unknown
+Root account has MFA enabled unknown
+Admin users have MFA enabled unknown
+Users are logging in securely unknown
+https://app.aikido.dev/reports/hipaa 31/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+IAM users have MFA enabled unknown
+Type Applies the least privilege principle to cloud resources Status
+Firewall rule prevents SSH access from anywhere unknown
+Databases only allows trusted connections unknown
+Droplet prevent SSH from anywhere unknown
+Firewall rules allow SSH from any public IP complying
+S3 Buckets should have block public access globally complying
+Kubernetes dashboard might be deployed complying
+Azure Cognitive Services allows public network access Azure Key Vault allows public network access AKS API server does not limit access by IP ranges Azure Storage Account allow public access Azure Storage blobs do not restrict public access for nested items complying
+complying
+complying
+complying
+complying
+Amazon EKS Clusters public endpoints should not allow traffic from any IP complying
+AWS EKS Node groups have implicit SSH access from any IP complying
+API Gateway endpoints do not require an API key or authorization S3 bucket grants public access to all contents {GO } Profiling endpoint automatically exposed on /debug/pprof Security group has strict ingress rules S3 Buckets have proper access rules complying
+complying
+complying
+unknown
+unknown
+https://app.aikido.dev/reports/hipaa 32/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+ECR repositories have strict access permissions unknown
+RDS instances are not publicly accessible unknown
+SQS queues have strict access permissions unknown
+RDS instance snapshots are protected unknown
+Lambda functions have strict access policies unknown
+Default VPC does not allow any inbound traffic unknown
+No unused security groups are present unknown
+EKS Clusters use private access endpoint for Kubernetes API server unknown
+Security group has strict ingress rules for Docker API access unknown
+Security group has strict ingress rules for RDP access unknown
+Security group has strict ingress rules for CUPS access unknown
+Security group has strict ingress rules for ClickHouse access unknown
+Security group has strict ingress rules for Grafana access unknown
+SQL instances have strict access permission unknown
+KMS keys have strict access permissions unknown
+SQL instance root user has strict access permissions unknown
+SQL instances are not publicly accessible unknown
+Cloud functions are not publicly accessible unknown
+Kubernetes master endpoint is not publicly available unknown
+Firewall rule prevents SSH access from anywhere unknown
+https://app.aikido.dev/reports/hipaa 33/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Firewall rule prevents RDP access from anywhere unknown
+Storage Buckets have proper access rules unknown
+Cloud functions have strict access policies unknown
+Firewall rule prevents Docker API access from anywhere unknown
+Access to BigQuery datasets are restricted unknown
+Blob containers have stricta access permissions unknown
+Cosmos DB is not publicly accessible unknown
+Key Vaults have strict access permission rules unknown
+SQL Servers are not publicly accessible unknown
+Azure Kubernetes cluster are private unknown
+Azure Storage Account restricts access by network unknown
+Firewall rule prevents SSH access from anywhere unknown
+Firewall rule prevents RDP access from anywhere unknown
+Firewall rule prevents FTP access from anywhere unknown
+Firewall rule prevents Elastic Search access from anywhere unknown
+Firewall rule prevents Docker API access from anywhere unknown
+EBS snapshots are shared securely or kept private unknown
+Redshift clusters are isolated from the public internet unknown
+Redshift clusters restrict inbound traffic to trusted sources unknown
+SNS topics are restricted to trusted principals unknown
+https://app.aikido.dev/reports/hipaa 34/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+OpenSearch domains are isolated from public access S3 bucket has all block public access options enabled S3 bucket has block_public_acls enabled S3 public access is blocked at the account level VPC security groups do not allow unrestricted ingress to all ports and protocols VPC security groups restrict public ingress to port 23 VPC security groups restrict public ingress to port 2379 VPC security groups restrict public ingress to port 3000 VPC security groups restrict public ingress to port 5500 VPC security groups restrict public ingress to port 5800 API Gateway endpoints require an API key or authorization Azure Container Registries restrict access to trusted networks Azure Container Registries have anonymous pull disabled Firewall rules do not allow unrestricted ingress to all ports and protocols Firewall rules restrict public ingress to port 23 Firewall rules restrict public ingress to port 2379 Firewall rules restrict public ingress to port 3000 Firewall rules restrict public ingress to port 5500 Firewall rules restrict public ingress to port 5800 Storage buckets have public access prevention enabled unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+https://app.aikido.dev/reports/hipaa 35/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+No sensitive interfaces are exposed Type Applies the least privilege principle for cloud users Only relevant IAM credentials are used Users are only allowed to use corporate emails Security contact information is set IAM users rotate access keys regularly Only active users have console access IAM password policy enforces a minimum length of 14 characters or greater Each IAM user has only one active access key IAM users receive permissions only through groups IAM credentials all in use within the last 45 days AKS clusters have Microsoft Entra ID integration enabled AKS clusters have Azure RBAC for Kubernetes Authorization enabled AKS clusters have local accounts disabled 1.6.5 Technical Safeguards: Transmission
+Security
+No clouds
+monitored
+40%
+Type Encrypts data at rest Docker image repository not encrypted at rest SNS topics are not encrypted at rest unknown
+Status
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+unknown
+Status
+complying
+complying
+https://app.aikido.dev/reports/hipaa 36/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+Elasticsearch domain is not encrypted at rest complying
+SQS queue data is not encrypted complying
+AWS ElastiCache Redis cluster should have encryption at rest enabled complying
+Amazon EKS Clusters should have secrets encryption enabled complying
+API Gateway REST API caching is unencrypted complying
+RDS instance data is encrypted unknown
+EBS volumes are encrypted unknown
+Virtual Machines have confidential computing enabled unknown
+Databases have encryption at rest unknown
+KMS keys have key rotation enabled unknown
+CloudWatch log groups are encrypted with a customer managed KMS key unknown
+API Gateway REST API caching is encrypted unknown
+EFS file systems are encrypted at rest unknown
+CloudTrail S3 buckets are encrypted with a customer managed KMS key unknown
+Default EBS volume encryption is enabled in all regions unknown
+AKS clusters have encryption at rest enabled for etcd secrets unknown
+AKS clusters have the Key Vault Secret Store CSI driver enabled unknown
+Azure SQL Databases have Transparent Data Encryption enabled unknown
+KMS keys have key rotation enabled unknown
+Type Uses up to date cryptography libraries Status
+https://app.aikido.dev/reports/hipaa 37/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+{.NET } Use of broken or outdated encryption {PY } Using deprecated cryptographic library {SWIFT } Usage of deprecated or broken encryption detected {JA V A } Use of broken or outdated encryption {PY } Hashes should include an unpredictable salt complying
+complying
+complying
+complying
+complying
+Type Enforces safe SSL protocol usage Cloud SQL db not enforcing SSL {PHP } SSL certificate verification turned off during requests Status
+complying
+complying
+{PY } SSL certificate verification turned off during requests {JS } NodeJS talks to database without encryption {.NET } Deprecated SSL Protocol Usage Detected complying
+complying
+complying
+Type Enforces HTTPS traffic to cloud instances Load Balancers only accept HTTPS connections Status
+unknown
+Cloud functions require HTTPS invocations App services require HTTPS only LoadBalancers require HTTPS only traffic Load balancer SSL redirect enabled unknown
+unknown
+unknown
+unknown
+Type Enforces latest TLS version Status
+Load balancers enforce HTTPS unknown
+https://app.aikido.dev/reports/hipaa 38/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+CloudFront distributions enforce HTTPS unknown
+No expired server certificates in AWS IAM Application Gateways enforce HTTPS traffic only Application Gateways require TLS 1.2 or higher Load balancers use latest TLS1.3 version unknown
+unknown
+unknown
+unknown
+SSL Certificates are automatically renewed Load balancers have valid certificates unknown
+unknown
+CloudFront distributions requires up-to-date TLS Protocols unknown
+Web Apps use an up-to-date TLS version unknown
+Azure Storage Accounts enforces latest TLS version unknown
+Azure Cache for Redis instances require TLS connections Event Grid Topics enforce secure TLS connections Event Grid Domains enforce secure TLS connections unknown
+unknown
+unknown
+Service Bus Namespaces enforce secure TLS connections unknown
+Event Hubs Namespaces enforce secure TLS connections unknown
+Elasticsearch domain might have outdated TLS version Load balancer is using outdated TLS policy Azure Storage Accounts does not enforce latest TLS version complying
+complying
+complying
+API Gateway stages are not using TLS 1.2 or higher complying
+Type Prevents abuse of cookies Status
+https://app.aikido.dev/reports/hipaa 39/40
+11/3/25, 3:34 PM Solved issues - Loma-Health - Aikido Security
+{PHP } Laravel cookies can be sent unencrypted complying
+{JA V A } Cookie missing HttpOnly flag complying
+https://app.aikido.dev/reports/hipaa 40/40

@@ -1,0 +1,126 @@
+# Cursor AI Development Protocol
+
+## Standard Workflow for All Development Tasks
+
+When given a development task, follow this complete workflow:
+
+### 1. **Task Analysis & Planning**
+- Understand requirements fully
+- Create a todo list for complex tasks (use todo_write tool)
+- Ask clarifying questions if needed
+
+### 2. **Implementation**
+- Write clean, well-documented code
+- Follow existing code patterns and style
+- Implement appropriate tests (unit, integration, e2e as needed)
+- Run linters and fix any errors
+
+### 3. **Local Testing**
+- Run all tests and ensure they pass
+- Test the feature manually using browser tools if applicable
+- Verify no regressions
+
+### 4. **Git Workflow**
+- Create a feature branch with descriptive name (e.g., `feat-<description>` or `fix-<description>`)
+- Make atomic, logical commits with clear messages
+- Push branch to GitHub
+
+### 5. **Pull Request**
+- Create PR with:
+  - Clear title describing the change
+  - Detailed description of what was done and why
+  - List of changes
+  - Testing notes
+  - Any relevant screenshots/demos
+- Assign appropriate reviewers if needed
+
+### 6. **CI/CD Pipeline**
+- Monitor PR checks (tests, linting, type checking, etc.)
+- If checks fail: Fix issues and push updates
+- Repeat until all checks pass
+
+### 7. **Merge & Deploy**
+- Once all checks pass, merge PR to main
+- Verify GitHub Actions workflow triggers
+- Confirm Render deployment starts
+- Monitor deployment success
+
+### 8. **Verification**
+- Check that deployment completed successfully
+- Verify the feature works in production
+- Clean up: delete feature branch if appropriate
+
+## Git Configuration
+- User: Grant Thain
+- Email: grantthain@users.noreply.github.com
+- GitHub: grantthain
+- Remote: https://github.com/Loma-Health/loma-org.git
+
+## Deployment Configuration
+- Platform: Render
+- Service ID: srv-d3e6dovdiees73fqml80
+- Workspace: tea-d0h28vmuk2gs73ccvpm0
+- Auto-deploy: Triggered via GitHub Actions on merge to main
+- Dashboard: https://dashboard.render.com/web/srv-d3e6dovdiees73fqml80
+
+## Required Permissions
+- `git_write` - For committing and pushing changes
+- `network` - For GitHub/Render API calls
+
+## Tools Available
+- GitHub CLI (gh) - For PR creation and management
+- Git - For version control
+- Render MCP - For deployment verification (partial functionality)
+- Browser tools - For testing web features
+
+## Important Notes
+- **Never commit directly to main** - Always use feature branches
+- **Always run tests** before creating PR
+- **Don't merge until all checks pass**
+- **Verify deployments** after merge
+- **Clean commit history** - Use descriptive messages
+- **Security** - Never commit secrets or sensitive data
+
+## Commit Message Format
+```
+type(scope): brief description
+
+- Detailed bullet points of changes
+- Why the change was made
+- Any breaking changes or migration notes
+```
+
+Types: feat, fix, docs, style, refactor, test, chore
+
+## Branch Naming Convention
+- Features: `feat-<short-description>`
+- Fixes: `fix-<short-description>`
+- Docs: `docs-<short-description>`
+- Refactoring: `refactor-<short-description>`
+
+## PR Title Format
+```
+[Type] Brief description of the change
+```
+
+Examples:
+- `[Feature] Add user profile editing`
+- `[Fix] Resolve authentication redirect loop`
+- `[Docs] Update API documentation`
+
+## Testing Requirements
+- Unit tests for business logic
+- Integration tests for API endpoints
+- E2E tests for critical user flows
+- All tests must pass before merging
+
+## Code Quality Standards
+- Follow TypeScript/JavaScript best practices
+- Use ESLint and Prettier configurations
+- Write self-documenting code with clear variable names
+- Add comments for complex logic
+- Keep functions small and focused
+
+## This Protocol is Mandatory
+Unless explicitly told otherwise by the user, always follow this complete workflow from implementation through deployment verification.
+

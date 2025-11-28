@@ -1,0 +1,128 @@
+# ESSENTIAL CODE ONLY - IGNORE EVERYTHING ELSE
+
+# Dependencies
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+server/public
+
+# Environment variables and secrets
+.env*
+!.env.example
+env.development
+env.production
+.env.development
+.env.production
+
+# Database files
+*.db
+*.sqlite
+*.db.backup.*
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# All logs and runtime data
+logs/
+*.log
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage and testing
+coverage/
+*.lcov
+*.test.js
+test-*.js
+test-*.html
+test-results.json
+vitest.config.ts
+
+# Cache directories
+.npm
+jspm_packages/
+.node_repl_history
+
+# Package files
+*.tgz
+.yarn-integrity
+
+# ALL conversation artifacts and attachments
+attached_assets/
+uploads/
+
+# ALL temporary and analysis files
+*_ANALYSIS.md
+*_REPORT.md
+*_AUDIT*.md
+*POSTMORTEM.md
+*_PLAN.md
+*_IMPLEMENTATION*.md
+*_READINESS*.md
+*_GUIDE.md
+*_SUMMARY.md
+*_ARCHITECTURE*.md
+*_COMPLETE.md
+*_ASSESSMENT.md
+*_PROPOSAL.md
+*_TEST.md
+*_FLOW*.md
+*_BEST_PRACTICES.md
+*_INSTRUCTIONS.md
+*_SOLUTION.md
+*_SYSTEM*.md
+*FIX*.md
+EXPORT_TO_GITHUB_SOLUTION.md
+REPLIT_SOLUTION.md
+GITHUB_FIX_INSTRUCTIONS.md
+NUCLEAR_RESET_PLAN.md
+MANUAL_A+_PLAN.md
+
+# All deployment and build scripts
+deploy*.sh
+deploy*.js
+smart-deploy.cjs
+force-build.cjs
+backfill-*.js
+backfill-*.cjs
+nuclear-git-reset.sh
+fix-github-push.sh
+quick-deploy.sh
+build-production.js
+build.config.js
+update-transaction-categories.js
+debug-email.js
+test-production.js
+test-templates.js
+test-webhook.js
+test-backfill.html
+deployment-test.js
+
+# Backup and cookie files
+vite.config.ts.*
+cookies*.txt
+*.backup
+new_session.txt
+
+# Generated and temporary files
+generated-icon.png
+html.meta.json.gz
+*.meta.json.gzstart-dev.sh

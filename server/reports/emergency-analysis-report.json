@@ -1,0 +1,1399 @@
+{
+  "timestamp": "2025-07-03T22:15:24.647Z",
+  "fieldMapping": {
+    "duplicateColumns": [
+      {
+        "standardName": "npi_number",
+        "foundColumns": [
+          {
+            "name": "npinumber",
+            "type": "text",
+            "nullable": "YES"
+          },
+          {
+            "name": "npi_number",
+            "type": "text",
+            "nullable": "YES"
+          }
+        ]
+      },
+      {
+        "standardName": "date_of_birth",
+        "foundColumns": [
+          {
+            "name": "dateofbirth",
+            "type": "date",
+            "nullable": "YES"
+          },
+          {
+            "name": "date_of_birth",
+            "type": "timestamp without time zone",
+            "nullable": "YES"
+          }
+        ]
+      },
+      {
+        "standardName": "birth_city",
+        "foundColumns": [
+          {
+            "name": "birthcity",
+            "type": "text",
+            "nullable": "YES"
+          },
+          {
+            "name": "birth_city",
+            "type": "text",
+            "nullable": "YES"
+          }
+        ]
+      },
+      {
+        "standardName": "birth_state",
+        "foundColumns": [
+          {
+            "name": "birthstate",
+            "type": "text",
+            "nullable": "YES"
+          },
+          {
+            "name": "birth_state",
+            "type": "text",
+            "nullable": "YES"
+          }
+        ]
+      },
+      {
+        "standardName": "birth_country",
+        "foundColumns": [
+          {
+            "name": "birthcountry",
+            "type": "text",
+            "nullable": "YES"
+          },
+          {
+            "name": "birth_country",
+            "type": "text",
+            "nullable": "YES"
+          }
+        ]
+      },
+      {
+        "standardName": "is_us_citizen",
+        "foundColumns": [
+          {
+            "name": "isuscitizen",
+            "type": "boolean",
+            "nullable": "YES"
+          },
+          {
+            "name": "is_us_citizen",
+            "type": "boolean",
+            "nullable": "YES"
+          }
+        ]
+      },
+      {
+        "standardName": "work_permit_visa",
+        "foundColumns": [
+          {
+            "name": "workpermitvisa",
+            "type": "text",
+            "nullable": "YES"
+          },
+          {
+            "name": "work_permit_visa",
+            "type": "text",
+            "nullable": "YES"
+          }
+        ]
+      },
+      {
+        "standardName": "taxonomy_code",
+        "foundColumns": [
+          {
+            "name": "taxonomycode",
+            "type": "text",
+            "nullable": "YES"
+          },
+          {
+            "name": "taxonomy_code",
+            "type": "text",
+            "nullable": "YES"
+          }
+        ]
+      }
+    ],
+    "namingInconsistencies": [],
+    "dataTypeConflicts": []
+  },
+  "affectedUsers": {
+    "totalUsers": 12,
+    "usersWithDataLoss": [
+      {
+        "issue": "Conflicting data in date_of_birth vs dateofbirth",
+        "affectedCount": 1,
+        "users": [
+          {
+            "id": 1,
+            "username": "demo_therapist",
+            "name": "Testy test",
+            "date_of_birth": "1991-01-01T00:00:00.000Z",
+            "dateofbirth": "1997-09-15T00:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "issue": "Conflicting data in birth_city vs birthcity",
+        "affectedCount": 1,
+        "users": [
+          {
+            "id": 1,
+            "username": "demo_therapist",
+            "name": "Testy test",
+            "birth_city": "Denton",
+            "birthcity": "test"
+          }
+        ]
+      },
+      {
+        "issue": "Conflicting data in birth_state vs birthstate",
+        "affectedCount": 1,
+        "users": [
+          {
+            "id": 1,
+            "username": "demo_therapist",
+            "name": "Testy test",
+            "birth_state": "Ohio",
+            "birthstate": "Texas"
+          }
+        ]
+      }
+    ],
+    "usersWithIncompleteProfiles": [
+      {
+        "field": "email",
+        "affectedCount": 9,
+        "affectedUsers": [
+          {
+            "id": 9,
+            "username": "therapist",
+            "name": "Dr. Emma Johnson",
+            "email": null
+          },
+          {
+            "id": 10,
+            "username": "demo",
+            "name": "Demo User",
+            "email": null
+          },
+          {
+            "id": 17,
+            "username": "demo-therapist",
+            "name": "Demo Therapist",
+            "email": null
+          },
+          {
+            "id": 19,
+            "username": "demo@example.com",
+            "name": "Demo User",
+            "email": null
+          },
+          {
+            "id": 20,
+            "username": "dev",
+            "name": "Dev User",
+            "email": null
+          },
+          {
+            "id": 21,
+            "username": "howdyduty",
+            "name": "howdyduty",
+            "email": null
+          },
+          {
+            "id": 22,
+            "username": "howdyduty1",
+            "name": "howdyduty1",
+            "email": null
+          },
+          {
+            "id": 23,
+            "username": "ayoooooooo",
+            "name": "ayoooooooo ayoooooooo",
+            "email": null
+          },
+          {
+            "id": 24,
+            "username": "ayooo",
+            "name": "ayooo ayooo",
+            "email": null
+          }
+        ]
+      },
+      {
+        "field": "state",
+        "affectedCount": 10,
+        "affectedUsers": [
+          {
+            "id": 9,
+            "username": "therapist",
+            "name": "Dr. Emma Johnson",
+            "state": null
+          },
+          {
+            "id": 10,
+            "username": "demo",
+            "name": "Demo User",
+            "state": null
+          },
+          {
+            "id": 17,
+            "username": "demo-therapist",
+            "name": "Demo Therapist",
+            "state": null
+          },
+          {
+            "id": 19,
+            "username": "demo@example.com",
+            "name": "Demo User",
+            "state": null
+          },
+          {
+            "id": 20,
+            "username": "dev",
+            "name": "Dev User",
+            "state": null
+          },
+          {
+            "id": 21,
+            "username": "howdyduty",
+            "name": "howdyduty",
+            "state": null
+          },
+          {
+            "id": 22,
+            "username": "howdyduty1",
+            "name": "howdyduty1",
+            "state": null
+          },
+          {
+            "id": 23,
+            "username": "ayoooooooo",
+            "name": "ayoooooooo ayoooooooo",
+            "state": null
+          },
+          {
+            "id": 24,
+            "username": "ayooo",
+            "name": "ayooo ayooo",
+            "state": null
+          },
+          {
+            "id": 26,
+            "username": "testuser2",
+            "name": "Test User 2",
+            "state": null
+          }
+        ]
+      },
+      {
+        "field": "zipcode",
+        "affectedCount": 10,
+        "affectedUsers": [
+          {
+            "id": 9,
+            "username": "therapist",
+            "name": "Dr. Emma Johnson",
+            "zipcode": null
+          },
+          {
+            "id": 10,
+            "username": "demo",
+            "name": "Demo User",
+            "zipcode": null
+          },
+          {
+            "id": 17,
+            "username": "demo-therapist",
+            "name": "Demo Therapist",
+            "zipcode": null
+          },
+          {
+            "id": 19,
+            "username": "demo@example.com",
+            "name": "Demo User",
+            "zipcode": null
+          },
+          {
+            "id": 20,
+            "username": "dev",
+            "name": "Dev User",
+            "zipcode": null
+          },
+          {
+            "id": 21,
+            "username": "howdyduty",
+            "name": "howdyduty",
+            "zipcode": null
+          },
+          {
+            "id": 22,
+            "username": "howdyduty1",
+            "name": "howdyduty1",
+            "zipcode": null
+          },
+          {
+            "id": 23,
+            "username": "ayoooooooo",
+            "name": "ayoooooooo ayoooooooo",
+            "zipcode": null
+          },
+          {
+            "id": 24,
+            "username": "ayooo",
+            "name": "ayooo ayooo",
+            "zipcode": null
+          },
+          {
+            "id": 26,
+            "username": "testuser2",
+            "name": "Test User 2",
+            "zipcode": null
+          }
+        ]
+      },
+      {
+        "field": "yearsofexperience",
+        "affectedCount": 10,
+        "affectedUsers": [
+          {
+            "id": 9,
+            "username": "therapist",
+            "name": "Dr. Emma Johnson",
+            "yearsofexperience": null
+          },
+          {
+            "id": 10,
+            "username": "demo",
+            "name": "Demo User",
+            "yearsofexperience": null
+          },
+          {
+            "id": 17,
+            "username": "demo-therapist",
+            "name": "Demo Therapist",
+            "yearsofexperience": null
+          },
+          {
+            "id": 19,
+            "username": "demo@example.com",
+            "name": "Demo User",
+            "yearsofexperience": null
+          },
+          {
+            "id": 20,
+            "username": "dev",
+            "name": "Dev User",
+            "yearsofexperience": null
+          },
+          {
+            "id": 21,
+            "username": "howdyduty",
+            "name": "howdyduty",
+            "yearsofexperience": null
+          },
+          {
+            "id": 22,
+            "username": "howdyduty1",
+            "name": "howdyduty1",
+            "yearsofexperience": null
+          },
+          {
+            "id": 23,
+            "username": "ayoooooooo",
+            "name": "ayoooooooo ayoooooooo",
+            "yearsofexperience": null
+          },
+          {
+            "id": 24,
+            "username": "ayooo",
+            "name": "ayooo ayooo",
+            "yearsofexperience": null
+          },
+          {
+            "id": 26,
+            "username": "testuser2",
+            "name": "Test User 2",
+            "yearsofexperience": null
+          }
+        ]
+      },
+      {
+        "field": "baserate",
+        "affectedCount": 10,
+        "affectedUsers": [
+          {
+            "id": 9,
+            "username": "therapist",
+            "name": "Dr. Emma Johnson",
+            "baserate": null
+          },
+          {
+            "id": 10,
+            "username": "demo",
+            "name": "Demo User",
+            "baserate": null
+          },
+          {
+            "id": 17,
+            "username": "demo-therapist",
+            "name": "Demo Therapist",
+            "baserate": null
+          },
+          {
+            "id": 19,
+            "username": "demo@example.com",
+            "name": "Demo User",
+            "baserate": null
+          },
+          {
+            "id": 20,
+            "username": "dev",
+            "name": "Dev User",
+            "baserate": null
+          },
+          {
+            "id": 21,
+            "username": "howdyduty",
+            "name": "howdyduty",
+            "baserate": null
+          },
+          {
+            "id": 22,
+            "username": "howdyduty1",
+            "name": "howdyduty1",
+            "baserate": null
+          },
+          {
+            "id": 23,
+            "username": "ayoooooooo",
+            "name": "ayoooooooo ayoooooooo",
+            "baserate": null
+          },
+          {
+            "id": 24,
+            "username": "ayooo",
+            "name": "ayooo ayooo",
+            "baserate": null
+          },
+          {
+            "id": 26,
+            "username": "testuser2",
+            "name": "Test User 2",
+            "baserate": null
+          }
+        ]
+      },
+      {
+        "field": "npinumber",
+        "affectedCount": 11,
+        "affectedUsers": [
+          {
+            "id": 9,
+            "username": "therapist",
+            "name": "Dr. Emma Johnson",
+            "npinumber": null
+          },
+          {
+            "id": 10,
+            "username": "demo",
+            "name": "Demo User",
+            "npinumber": null
+          },
+          {
+            "id": 17,
+            "username": "demo-therapist",
+            "name": "Demo Therapist",
+            "npinumber": null
+          },
+          {
+            "id": 19,
+            "username": "demo@example.com",
+            "name": "Demo User",
+            "npinumber": null
+          },
+          {
+            "id": 20,
+            "username": "dev",
+            "name": "Dev User",
+            "npinumber": null
+          },
+          {
+            "id": 21,
+            "username": "howdyduty",
+            "name": "howdyduty",
+            "npinumber": null
+          },
+          {
+            "id": 22,
+            "username": "howdyduty1",
+            "name": "howdyduty1",
+            "npinumber": null
+          },
+          {
+            "id": 23,
+            "username": "ayoooooooo",
+            "name": "ayoooooooo ayoooooooo",
+            "npinumber": null
+          },
+          {
+            "id": 24,
+            "username": "ayooo",
+            "name": "ayooo ayooo",
+            "npinumber": null
+          },
+          {
+            "id": 26,
+            "username": "testuser2",
+            "name": "Test User 2",
+            "npinumber": null
+          }
+        ]
+      },
+      {
+        "field": "npi_number",
+        "affectedCount": 10,
+        "affectedUsers": [
+          {
+            "id": 9,
+            "username": "therapist",
+            "name": "Dr. Emma Johnson",
+            "npi_number": null
+          },
+          {
+            "id": 10,
+            "username": "demo",
+            "name": "Demo User",
+            "npi_number": null
+          },
+          {
+            "id": 17,
+            "username": "demo-therapist",
+            "name": "Demo Therapist",
+            "npi_number": null
+          },
+          {
+            "id": 19,
+            "username": "demo@example.com",
+            "name": "Demo User",
+            "npi_number": null
+          },
+          {
+            "id": 20,
+            "username": "dev",
+            "name": "Dev User",
+            "npi_number": null
+          },
+          {
+            "id": 21,
+            "username": "howdyduty",
+            "name": "howdyduty",
+            "npi_number": null
+          },
+          {
+            "id": 22,
+            "username": "howdyduty1",
+            "name": "howdyduty1",
+            "npi_number": null
+          },
+          {
+            "id": 23,
+            "username": "ayoooooooo",
+            "name": "ayoooooooo ayoooooooo",
+            "npi_number": null
+          },
+          {
+            "id": 24,
+            "username": "ayooo",
+            "name": "ayooo ayooo",
+            "npi_number": null
+          },
+          {
+            "id": 26,
+            "username": "testuser2",
+            "name": "Test User 2",
+            "npi_number": null
+          }
+        ]
+      },
+      {
+        "field": "dateofbirth",
+        "affectedCount": 11,
+        "affectedUsers": [
+          {
+            "id": 9,
+            "username": "therapist",
+            "name": "Dr. Emma Johnson",
+            "dateofbirth": null
+          },
+          {
+            "id": 10,
+            "username": "demo",
+            "name": "Demo User",
+            "dateofbirth": null
+          },
+          {
+            "id": 17,
+            "username": "demo-therapist",
+            "name": "Demo Therapist",
+            "dateofbirth": null
+          },
+          {
+            "id": 19,
+            "username": "demo@example.com",
+            "name": "Demo User",
+            "dateofbirth": null
+          },
+          {
+            "id": 20,
+            "username": "dev",
+            "name": "Dev User",
+            "dateofbirth": null
+          },
+          {
+            "id": 21,
+            "username": "howdyduty",
+            "name": "howdyduty",
+            "dateofbirth": null
+          },
+          {
+            "id": 22,
+            "username": "howdyduty1",
+            "name": "howdyduty1",
+            "dateofbirth": null
+          },
+          {
+            "id": 23,
+            "username": "ayoooooooo",
+            "name": "ayoooooooo ayoooooooo",
+            "dateofbirth": null
+          },
+          {
+            "id": 24,
+            "username": "ayooo",
+            "name": "ayooo ayooo",
+            "dateofbirth": null
+          },
+          {
+            "id": 26,
+            "username": "testuser2",
+            "name": "Test User 2",
+            "dateofbirth": null
+          }
+        ]
+      },
+      {
+        "field": "date_of_birth",
+        "affectedCount": 10,
+        "affectedUsers": [
+          {
+            "id": 9,
+            "username": "therapist",
+            "name": "Dr. Emma Johnson",
+            "date_of_birth": null
+          },
+          {
+            "id": 10,
+            "username": "demo",
+            "name": "Demo User",
+            "date_of_birth": null
+          },
+          {
+            "id": 17,
+            "username": "demo-therapist",
+            "name": "Demo Therapist",
+            "date_of_birth": null
+          },
+          {
+            "id": 19,
+            "username": "demo@example.com",
+            "name": "Demo User",
+            "date_of_birth": null
+          },
+          {
+            "id": 20,
+            "username": "dev",
+            "name": "Dev User",
+            "date_of_birth": null
+          },
+          {
+            "id": 21,
+            "username": "howdyduty",
+            "name": "howdyduty",
+            "date_of_birth": null
+          },
+          {
+            "id": 22,
+            "username": "howdyduty1",
+            "name": "howdyduty1",
+            "date_of_birth": null
+          },
+          {
+            "id": 23,
+            "username": "ayoooooooo",
+            "name": "ayoooooooo ayoooooooo",
+            "date_of_birth": null
+          },
+          {
+            "id": 24,
+            "username": "ayooo",
+            "name": "ayooo ayooo",
+            "date_of_birth": null
+          },
+          {
+            "id": 26,
+            "username": "testuser2",
+            "name": "Test User 2",
+            "date_of_birth": null
+          }
+        ]
+      },
+      {
+        "field": "birthcity",
+        "affectedCount": 11,
+        "affectedUsers": [
+          {
+            "id": 9,
+            "username": "therapist",
+            "name": "Dr. Emma Johnson",
+            "birthcity": null
+          },
+          {
+            "id": 10,
+            "username": "demo",
+            "name": "Demo User",
+            "birthcity": null
+          },
+          {
+            "id": 17,
+            "username": "demo-therapist",
+            "name": "Demo Therapist",
+            "birthcity": null
+          },
+          {
+            "id": 19,
+            "username": "demo@example.com",
+            "name": "Demo User",
+            "birthcity": null
+          },
+          {
+            "id": 20,
+            "username": "dev",
+            "name": "Dev User",
+            "birthcity": null
+          },
+          {
+            "id": 21,
+            "username": "howdyduty",
+            "name": "howdyduty",
+            "birthcity": null
+          },
+          {
+            "id": 22,
+            "username": "howdyduty1",
+            "name": "howdyduty1",
+            "birthcity": null
+          },
+          {
+            "id": 23,
+            "username": "ayoooooooo",
+            "name": "ayoooooooo ayoooooooo",
+            "birthcity": null
+          },
+          {
+            "id": 24,
+            "username": "ayooo",
+            "name": "ayooo ayooo",
+            "birthcity": null
+          },
+          {
+            "id": 26,
+            "username": "testuser2",
+            "name": "Test User 2",
+            "birthcity": null
+          }
+        ]
+      },
+      {
+        "field": "birth_city",
+        "affectedCount": 10,
+        "affectedUsers": [
+          {
+            "id": 9,
+            "username": "therapist",
+            "name": "Dr. Emma Johnson",
+            "birth_city": null
+          },
+          {
+            "id": 10,
+            "username": "demo",
+            "name": "Demo User",
+            "birth_city": null
+          },
+          {
+            "id": 17,
+            "username": "demo-therapist",
+            "name": "Demo Therapist",
+            "birth_city": null
+          },
+          {
+            "id": 19,
+            "username": "demo@example.com",
+            "name": "Demo User",
+            "birth_city": null
+          },
+          {
+            "id": 20,
+            "username": "dev",
+            "name": "Dev User",
+            "birth_city": null
+          },
+          {
+            "id": 21,
+            "username": "howdyduty",
+            "name": "howdyduty",
+            "birth_city": null
+          },
+          {
+            "id": 22,
+            "username": "howdyduty1",
+            "name": "howdyduty1",
+            "birth_city": null
+          },
+          {
+            "id": 23,
+            "username": "ayoooooooo",
+            "name": "ayoooooooo ayoooooooo",
+            "birth_city": null
+          },
+          {
+            "id": 24,
+            "username": "ayooo",
+            "name": "ayooo ayooo",
+            "birth_city": null
+          },
+          {
+            "id": 26,
+            "username": "testuser2",
+            "name": "Test User 2",
+            "birth_city": null
+          }
+        ]
+      },
+      {
+        "field": "birthstate",
+        "affectedCount": 11,
+        "affectedUsers": [
+          {
+            "id": 9,
+            "username": "therapist",
+            "name": "Dr. Emma Johnson",
+            "birthstate": null
+          },
+          {
+            "id": 10,
+            "username": "demo",
+            "name": "Demo User",
+            "birthstate": null
+          },
+          {
+            "id": 17,
+            "username": "demo-therapist",
+            "name": "Demo Therapist",
+            "birthstate": null
+          },
+          {
+            "id": 19,
+            "username": "demo@example.com",
+            "name": "Demo User",
+            "birthstate": null
+          },
+          {
+            "id": 20,
+            "username": "dev",
+            "name": "Dev User",
+            "birthstate": null
+          },
+          {
+            "id": 21,
+            "username": "howdyduty",
+            "name": "howdyduty",
+            "birthstate": null
+          },
+          {
+            "id": 22,
+            "username": "howdyduty1",
+            "name": "howdyduty1",
+            "birthstate": null
+          },
+          {
+            "id": 23,
+            "username": "ayoooooooo",
+            "name": "ayoooooooo ayoooooooo",
+            "birthstate": null
+          },
+          {
+            "id": 24,
+            "username": "ayooo",
+            "name": "ayooo ayooo",
+            "birthstate": null
+          },
+          {
+            "id": 26,
+            "username": "testuser2",
+            "name": "Test User 2",
+            "birthstate": null
+          }
+        ]
+      },
+      {
+        "field": "birth_state",
+        "affectedCount": 10,
+        "affectedUsers": [
+          {
+            "id": 9,
+            "username": "therapist",
+            "name": "Dr. Emma Johnson",
+            "birth_state": null
+          },
+          {
+            "id": 10,
+            "username": "demo",
+            "name": "Demo User",
+            "birth_state": null
+          },
+          {
+            "id": 17,
+            "username": "demo-therapist",
+            "name": "Demo Therapist",
+            "birth_state": null
+          },
+          {
+            "id": 19,
+            "username": "demo@example.com",
+            "name": "Demo User",
+            "birth_state": null
+          },
+          {
+            "id": 20,
+            "username": "dev",
+            "name": "Dev User",
+            "birth_state": null
+          },
+          {
+            "id": 21,
+            "username": "howdyduty",
+            "name": "howdyduty",
+            "birth_state": null
+          },
+          {
+            "id": 22,
+            "username": "howdyduty1",
+            "name": "howdyduty1",
+            "birth_state": null
+          },
+          {
+            "id": 23,
+            "username": "ayoooooooo",
+            "name": "ayoooooooo ayoooooooo",
+            "birth_state": null
+          },
+          {
+            "id": 24,
+            "username": "ayooo",
+            "name": "ayooo ayooo",
+            "birth_state": null
+          },
+          {
+            "id": 26,
+            "username": "testuser2",
+            "name": "Test User 2",
+            "birth_state": null
+          }
+        ]
+      }
+    ]
+  },
+  "phiEncryption": {
+    "encryptedFields": [
+      {
+        "table": "users",
+        "field": "ssn",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED",
+        "plaintextRecords": 2
+      },
+      {
+        "table": "users",
+        "field": "email",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": true,
+        "status": "ENCRYPTED",
+        "plaintextRecords": 3
+      },
+      {
+        "table": "users",
+        "field": "date_of_birth",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED",
+        "plaintextRecords": 2
+      },
+      {
+        "table": "users",
+        "field": "birth_city",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED",
+        "plaintextRecords": 2
+      },
+      {
+        "table": "users",
+        "field": "birth_state",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED",
+        "plaintextRecords": 2
+      },
+      {
+        "table": "users",
+        "field": "birth_country",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED",
+        "plaintextRecords": 2
+      },
+      {
+        "table": "clients",
+        "field": "email",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": true,
+        "status": "ENCRYPTED"
+      },
+      {
+        "table": "clients",
+        "field": "phone",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": true,
+        "status": "ENCRYPTED"
+      },
+      {
+        "table": "clients",
+        "field": "notes",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED"
+      },
+      {
+        "table": "clients",
+        "field": "hometown",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED"
+      },
+      {
+        "table": "clients",
+        "field": "race",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED"
+      },
+      {
+        "table": "clients",
+        "field": "pronouns",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED"
+      },
+      {
+        "table": "sessions",
+        "field": "notes",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED"
+      }
+    ],
+    "unencryptedFields": [
+      {
+        "table": "users",
+        "field": "phone",
+        "hasPlaintext": true,
+        "hasEncrypted": false,
+        "hasSearchHash": false,
+        "status": "UNENCRYPTED"
+      },
+      {
+        "table": "users",
+        "field": "personalphone",
+        "hasPlaintext": true,
+        "hasEncrypted": false,
+        "hasSearchHash": false,
+        "status": "UNENCRYPTED"
+      },
+      {
+        "table": "users",
+        "field": "personalemail",
+        "hasPlaintext": true,
+        "hasEncrypted": false,
+        "hasSearchHash": false,
+        "status": "UNENCRYPTED"
+      },
+      {
+        "table": "users",
+        "field": "dateofbirth",
+        "hasPlaintext": true,
+        "hasEncrypted": false,
+        "hasSearchHash": false,
+        "status": "UNENCRYPTED"
+      },
+      {
+        "table": "users",
+        "field": "birthcity",
+        "hasPlaintext": true,
+        "hasEncrypted": false,
+        "hasSearchHash": false,
+        "status": "UNENCRYPTED"
+      },
+      {
+        "table": "users",
+        "field": "birthstate",
+        "hasPlaintext": true,
+        "hasEncrypted": false,
+        "hasSearchHash": false,
+        "status": "UNENCRYPTED"
+      },
+      {
+        "table": "users",
+        "field": "birthcountry",
+        "hasPlaintext": true,
+        "hasEncrypted": false,
+        "hasSearchHash": false,
+        "status": "UNENCRYPTED"
+      }
+    ],
+    "coverageGaps": [
+      {
+        "table": "users",
+        "field": "ssn",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED",
+        "plaintextRecords": 2,
+        "issue": "Plaintext data exists alongside encrypted data"
+      },
+      {
+        "table": "users",
+        "field": "email",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": true,
+        "status": "ENCRYPTED",
+        "plaintextRecords": 3,
+        "issue": "Plaintext data exists alongside encrypted data"
+      },
+      {
+        "table": "users",
+        "field": "date_of_birth",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED",
+        "plaintextRecords": 2,
+        "issue": "Plaintext data exists alongside encrypted data"
+      },
+      {
+        "table": "users",
+        "field": "birth_city",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED",
+        "plaintextRecords": 2,
+        "issue": "Plaintext data exists alongside encrypted data"
+      },
+      {
+        "table": "users",
+        "field": "birth_state",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED",
+        "plaintextRecords": 2,
+        "issue": "Plaintext data exists alongside encrypted data"
+      },
+      {
+        "table": "users",
+        "field": "birth_country",
+        "hasPlaintext": true,
+        "hasEncrypted": true,
+        "hasSearchHash": false,
+        "status": "ENCRYPTED",
+        "plaintextRecords": 2,
+        "issue": "Plaintext data exists alongside encrypted data"
+      }
+    ]
+  },
+  "dataConsistency": {
+    "fieldCollisions": [
+      {
+        "description": "NPI Number collision",
+        "primaryField": "npi_number",
+        "secondaryField": "npinumber",
+        "statistics": {
+          "totalRecords": 12,
+          "primaryPopulated": 2,
+          "secondaryPopulated": 1,
+          "bothPopulated": 1,
+          "conflictingValues": 0,
+          "onlySecondary": 0,
+          "onlyPrimary": 1
+        }
+      },
+      {
+        "description": "Date of Birth collision",
+        "primaryField": "date_of_birth",
+        "secondaryField": "dateofbirth",
+        "statistics": {
+          "totalRecords": 12,
+          "primaryPopulated": 2,
+          "secondaryPopulated": 1,
+          "bothPopulated": 1,
+          "conflictingValues": 1,
+          "onlySecondary": 0,
+          "onlyPrimary": 1
+        }
+      },
+      {
+        "description": "Birth City collision",
+        "primaryField": "birth_city",
+        "secondaryField": "birthcity",
+        "statistics": {
+          "totalRecords": 12,
+          "primaryPopulated": 2,
+          "secondaryPopulated": 1,
+          "bothPopulated": 1,
+          "conflictingValues": 1,
+          "onlySecondary": 0,
+          "onlyPrimary": 1
+        }
+      },
+      {
+        "description": "Birth State collision",
+        "primaryField": "birth_state",
+        "secondaryField": "birthstate",
+        "statistics": {
+          "totalRecords": 12,
+          "primaryPopulated": 2,
+          "secondaryPopulated": 1,
+          "bothPopulated": 1,
+          "conflictingValues": 1,
+          "onlySecondary": 0,
+          "onlyPrimary": 1
+        }
+      },
+      {
+        "description": "Birth Country collision",
+        "primaryField": "birth_country",
+        "secondaryField": "birthcountry",
+        "statistics": {
+          "totalRecords": 12,
+          "primaryPopulated": 2,
+          "secondaryPopulated": 1,
+          "bothPopulated": 1,
+          "conflictingValues": 0,
+          "onlySecondary": 0,
+          "onlyPrimary": 1
+        }
+      },
+      {
+        "description": "US Citizen collision",
+        "primaryField": "is_us_citizen",
+        "secondaryField": "isuscitizen",
+        "statistics": {
+          "totalRecords": 12,
+          "primaryPopulated": 2,
+          "secondaryPopulated": 1,
+          "bothPopulated": 1,
+          "conflictingValues": 0,
+          "onlySecondary": 0,
+          "onlyPrimary": 1
+        }
+      },
+      {
+        "description": "Work Permit Visa collision",
+        "primaryField": "work_permit_visa",
+        "secondaryField": "workpermitvisa",
+        "statistics": {
+          "totalRecords": 12,
+          "primaryPopulated": 0,
+          "secondaryPopulated": 1,
+          "bothPopulated": 0,
+          "conflictingValues": 0,
+          "onlySecondary": 1,
+          "onlyPrimary": 0
+        }
+      },
+      {
+        "description": "Taxonomy Code collision",
+        "primaryField": "taxonomy_code",
+        "secondaryField": "taxonomycode",
+        "statistics": {
+          "totalRecords": 12,
+          "primaryPopulated": 2,
+          "secondaryPopulated": 1,
+          "bothPopulated": 1,
+          "conflictingValues": 1,
+          "onlySecondary": 0,
+          "onlyPrimary": 1
+        }
+      }
+    ],
+    "nullValueAnalysis": [],
+    "dataTypeIssues": []
+  },
+  "summary": {
+    "criticalIssues": [
+      "Found 8 sets of duplicate columns causing field mapping conflicts",
+      "3 users have conflicting data in duplicate columns",
+      "7 PHI fields are not encrypted",
+      "6 PHI fields have both encrypted and plaintext data"
+    ],
+    "recommendations": [
+      "Implement single source of truth for field mappings",
+      "Establish data validation pipeline for profile updates",
+      "Create comprehensive audit trail for all profile changes",
+      "Implement automated data consistency monitoring"
+    ],
+    "priorityActions": [
+      "Standardize database schema to eliminate duplicate columns",
+      "Implement data reconciliation for conflicting fields",
+      "Encrypt all unprotected PHI fields",
+      "Remove plaintext PHI data where encrypted versions exist"
+    ]
+  }
+}

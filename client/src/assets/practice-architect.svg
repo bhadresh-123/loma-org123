@@ -1,0 +1,55 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#F5F2E8"/>
+  
+  <!-- Title -->
+  <text x="100" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#3A4A3A">PRACTICE ARCHITECT</text>
+  
+  <!-- Character Body -->
+  <rect x="80" y="130" width="40" height="50" fill="#A68B5B" rx="8"/>
+  
+  <!-- Shirt -->
+  <rect x="82" y="135" width="36" height="45" fill="#87CEEB" rx="3"/>
+  
+  <!-- Tie -->
+  <rect x="95" y="135" width="10" height="25" fill="#8B4513"/>
+  
+  <!-- Head -->
+  <circle cx="100" cy="115" r="20" fill="#DDBEA9"/>
+  
+  <!-- Glasses -->
+  <circle cx="92" cy="110" r="8" fill="none" stroke="#3A4A3A" stroke-width="3"/>
+  <circle cx="108" cy="110" r="8" fill="none" stroke="#3A4A3A" stroke-width="3"/>
+  <line x1="100" y1="110" x2="100" y2="110" stroke="#3A4A3A" stroke-width="3"/>
+  
+  <!-- Eyes -->
+  <circle cx="92" cy="110" r="3" fill="#3A4A3A"/>
+  <circle cx="108" cy="110" r="3" fill="#3A4A3A"/>
+  
+  <!-- Mustache -->
+  <ellipse cx="100" cy="118" rx="8" ry="3" fill="#8B4513"/>
+  
+  <!-- Pipe -->
+  <rect x="115" y="116" width="15" height="4" fill="#8B4513" rx="2"/>
+  <rect x="128" y="114" width="6" height="8" fill="#654321" rx="3"/>
+  
+  <!-- Hair (sides) -->
+  <path d="M 78 105 Q 75 95 80 90 Q 85 95 82 105" fill="#D3D3D3"/>
+  <path d="M 122 105 Q 125 95 120 90 Q 115 95 118 105" fill="#D3D3D3"/>
+  
+  <!-- Arms -->
+  <rect x="65" y="140" width="15" height="25" fill="#DDBEA9" rx="7"/>
+  <rect x="120" y="140" width="15" height="25" fill="#DDBEA9" rx="7"/>
+  
+  <!-- Left hand holding rolled paper -->
+  <circle cx="72" cy="170" r="6" fill="#DDBEA9"/>
+  <rect x="60" y="165" width="12" height="20" fill="#F5F5DC" rx="6"/>
+  
+  <!-- Right hand holding LLC document -->
+  <circle cx="128" cy="170" r="6" fill="#DDBEA9"/>
+  <rect x="135" y="155" width="20" height="25" fill="#F5F5DC" rx="2"/>
+  <text x="145" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#3A4A3A">LLC</text>
+  <line x1="138" y1="175" x2="152" y2="175" stroke="#3A4A3A" stroke-width="1"/>
+  <line x1="138" y1="177" x2="152" y2="177" stroke="#3A4A3A" stroke-width="1"/>
+  <line x1="138" y1="179" x2="148" y2="179" stroke="#3A4A3A" stroke-width="1"/>
+</svg>

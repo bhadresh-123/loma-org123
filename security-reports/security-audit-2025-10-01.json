@@ -1,0 +1,148 @@
+{
+  "timestamp": "2025-10-01T04:16:07.019Z",
+  "totalVulnerabilities": 17,
+  "critical": 0,
+  "high": 13,
+  "moderate": 4,
+  "low": 0,
+  "vulnerabilities": [
+    {
+      "name": "@esbuild-kit/core-utils",
+      "severity": "moderate",
+      "description": "No description available",
+      "fixAvailable": {
+        "name": "drizzle-kit",
+        "version": "0.18.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "@esbuild-kit/esm-loader",
+      "severity": "moderate",
+      "description": "No description available",
+      "fixAvailable": {
+        "name": "drizzle-kit",
+        "version": "0.18.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "cheerio",
+      "severity": "high",
+      "description": "No description available",
+      "fixAvailable": true
+    },
+    {
+      "name": "css-select",
+      "severity": "high",
+      "description": "No description available",
+      "fixAvailable": true
+    },
+    {
+      "name": "drizzle-kit",
+      "severity": "moderate",
+      "description": "No description available",
+      "fixAvailable": {
+        "name": "drizzle-kit",
+        "version": "0.18.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "esbuild",
+      "severity": "moderate",
+      "description": "No description available",
+      "fixAvailable": {
+        "name": "drizzle-kit",
+        "version": "0.18.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "extract-css",
+      "severity": "high",
+      "description": "No description available",
+      "fixAvailable": true
+    },
+    {
+      "name": "html-pdf-node",
+      "severity": "high",
+      "description": "No description available",
+      "fixAvailable": {
+        "name": "html-pdf-node",
+        "version": "1.0.7",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "inline-css",
+      "severity": "high",
+      "description": "No description available",
+      "fixAvailable": true
+    },
+    {
+      "name": "list-stylesheets",
+      "severity": "high",
+      "description": "No description available",
+      "fixAvailable": true
+    },
+    {
+      "name": "lodash.pick",
+      "severity": "high",
+      "description": "No description available",
+      "fixAvailable": true
+    },
+    {
+      "name": "node-fetch",
+      "severity": "high",
+      "description": "No description available",
+      "fixAvailable": {
+        "name": "html-pdf-node",
+        "version": "1.0.7",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "nth-check",
+      "severity": "high",
+      "description": "No description available",
+      "fixAvailable": true
+    },
+    {
+      "name": "puppeteer",
+      "severity": "high",
+      "description": "No description available",
+      "fixAvailable": {
+        "name": "html-pdf-node",
+        "version": "1.0.7",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "style-data",
+      "severity": "high",
+      "description": "No description available",
+      "fixAvailable": true
+    },
+    {
+      "name": "tar-fs",
+      "severity": "high",
+      "description": "No description available",
+      "fixAvailable": {
+        "name": "html-pdf-node",
+        "version": "1.0.7",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "ws",
+      "severity": "high",
+      "description": "No description available",
+      "fixAvailable": {
+        "name": "html-pdf-node",
+        "version": "1.0.7",
+        "isSemVerMajor": true
+      }
+    }
+  ]
+}

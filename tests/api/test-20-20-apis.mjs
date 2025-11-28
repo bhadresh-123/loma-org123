@@ -1,0 +1,549 @@
+#!/usr/bin/env node
+
+/**
+ * LOMA Platform - 20/20 API Test Suite
+ * 
+ * Comprehensive test suite to verify all 20 APIs are working correctly
+ */
+
+import fetch from 'node-fetch';
+
+const BASE_URL = process.env.TEST_BASE_URL || 'http://localhost:5000';
+
+// Test data
+const testUser = {
+  username: 'test-therapist@example.com',
+  password: 'TestPassword123!',
+  name: 'Dr. Test Therapist',
+  title: 'Licensed Clinical Psychologist',
+  license: 'LCP-12345'
+};
+
+const testClient = {
+  name: 'John Doe',
+  email: 'john.doe@example.com',
+  phone: '555-123-4567',
+  billingType: 'private_pay',
+  sessionCost: '150.00',
+  race: 'White',
+  age: 35,
+  hometown: 'Anytown, USA',
+  pronouns: 'he/him'
+};
+
+const testSession = {
+  patientId: 1,
+  sessionDate: '2025-01-20',
+  sessionNotes: 'Initial assessment completed. Client presents with anxiety symptoms.',
+  sessionType: 'individual',
+  duration: 50
+};
+
+const testTask = {
+  title: 'Follow up on homework assignment',
+  description: 'Check if client completed anxiety journal',
+  dueDate: '2025-01-25',
+  priority: 'medium',
+  patientId: 1
+};
+
+const testAIMessage = {
+  message: 'Help me create a treatment plan for anxiety',
+  context: 'Client presents with generalized anxiety disorder'
+};
+
+let authCookie = '';
+let userId = null;
+let clientId = null;
+let sessionId = null;
+let taskId = null;
+
+// Helper function to make authenticated requests
+async function authenticatedRequest(endpoint, options = {}) {
+  const url = `${BASE_URL}${endpoint}`;
+  const response = await fetch(url, {
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      'Cookie': authCookie,
+      ...options.headers
+    }
+  });
+  
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`HTTP ${response.status}: ${errorText}`);
+  }
+  
+  return response.json();
+}
+
+// Helper function to make unauthenticated requests
+async function request(endpoint, options = {}) {
+  const url = `${BASE_URL}${endpoint}`;
+  const response = await fetch(url, {
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers
+    }
+  });
+  
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`HTTP ${response.status}: ${errorText}`);
+  }
+  
+  return response.json();
+}
+
+// Test functions
+async function testRegistration() {
+  console.log('🧪 Testing User Registration...');
+  
+  try {
+    const response = await request('/api/register', {
+      method: 'POST',
+      body: JSON.stringify(testUser)
+    });
+    
+    console.log('✅ Registration successful');
+    userId = response.user?.id;
+    return true;
+  } catch (error) {
+    console.log('❌ Registration failed:', error.message);
+    return false;
+  }
+}
+
+async function testLogin() {
+  console.log('🧪 Testing User Login...');
+  
+  try {
+    const response = await fetch(`${BASE_URL}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: testUser.username,
+        password: testUser.password
+      })
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Login failed: ${response.status}`);
+    }
+    
+    // Extract cookie
+    const cookies = response.headers.get('set-cookie');
+    if (cookies) {
+      authCookie = cookies;
+    }
+    
+    const data = await response.json();
+    console.log('✅ Login successful');
+    userId = data.user?.id;
+    return true;
+  } catch (error) {
+    console.log('❌ Login failed:', error.message);
+    return false;
+  }
+}
+
+async function testGetCurrentUser() {
+  console.log('🧪 Testing Get Current User...');
+  
+  try {
+    const user = await authenticatedRequest('/api/user');
+    console.log('✅ Get current user successful');
+    console.log(`   User: ${user.username} (ID: ${user.id})`);
+    return true;
+  } catch (error) {
+    console.log('❌ Get current user failed:', error.message);
+    return false;
+  }
+}
+
+async function testLogout() {
+  console.log('🧪 Testing User Logout...');
+  
+  try {
+    const result = await authenticatedRequest('/api/logout', {
+      method: 'POST'
+    });
+    
+    console.log('✅ Logout successful');
+    return true;
+  } catch (error) {
+    console.log('❌ Logout failed:', error.message);
+    return false;
+  }
+}
+
+async function testGetUserProfile() {
+  console.log('🧪 Testing Get User Profile...');
+  
+  try {
+    const profile = await authenticatedRequest('/api/user/profile');
+    console.log('✅ Get user profile successful');
+    console.log(`   Profile: ${profile.name} - ${profile.email}`);
+    return true;
+  } catch (error) {
+    console.log('❌ Get user profile failed:', error.message);
+    return false;
+  }
+}
+
+async function testUpdateUserProfile() {
+  console.log('🧪 Testing Update User Profile...');
+  
+  try {
+    const updateData = {
+      name: 'Dr. Updated Therapist',
+      practiceDetails: {
+        biography: 'Updated biography',
+        yearsOfExperience: 15,
+        specialties: ['Anxiety', 'Depression', 'Trauma']
+      }
+    };
+    
+    const result = await authenticatedRequest('/api/user/profile', {
+      method: 'PUT',
+      body: JSON.stringify(updateData)
+    });
+    
+    console.log('✅ Update user profile successful');
+    return true;
+  } catch (error) {
+    console.log('❌ Update user profile failed:', error.message);
+    return false;
+  }
+}
+
+async function testCreateClient() {
+  console.log('🧪 Testing Create Client (Legacy Alias)...');
+  
+  try {
+    const client = await authenticatedRequest('/api/clients', {
+      method: 'POST',
+      body: JSON.stringify(testClient)
+    });
+    
+    console.log('✅ Create client successful');
+    console.log(`   Client: ${client.name} (ID: ${client.id})`);
+    clientId = client.id;
+    return true;
+  } catch (error) {
+    console.log('❌ Create client failed:', error.message);
+    return false;
+  }
+}
+
+async function testListClients() {
+  console.log('🧪 Testing List Clients (Legacy Alias)...');
+  
+  try {
+    const clients = await authenticatedRequest('/api/clients');
+    console.log('✅ List clients successful');
+    console.log(`   Found ${clients.length} clients`);
+    return true;
+  } catch (error) {
+    console.log('❌ List clients failed:', error.message);
+    return false;
+  }
+}
+
+async function testGetClientDetails() {
+  console.log('🧪 Testing Get Client Details (Legacy Alias)...');
+  
+  try {
+    const client = await authenticatedRequest(`/api/clients/${clientId}`);
+    console.log('✅ Get client details successful');
+    console.log(`   Client: ${client.name} - ${client.email}`);
+    return true;
+  } catch (error) {
+    console.log('❌ Get client details failed:', error.message);
+    return false;
+  }
+}
+
+async function testUpdateClient() {
+  console.log('🧪 Testing Update Client (Legacy Alias)...');
+  
+  try {
+    const updateData = {
+      name: 'John Smith',
+      email: 'john.smith@example.com',
+      phone: '555-987-6543'
+    };
+    
+    const client = await authenticatedRequest(`/api/clients/${clientId}`, {
+      method: 'PUT',
+      body: JSON.stringify(updateData)
+    });
+    
+    console.log('✅ Update client successful');
+    console.log(`   Updated client: ${client.name}`);
+    return true;
+  } catch (error) {
+    console.log('❌ Update client failed:', error.message);
+    return false;
+  }
+}
+
+async function testDeleteClient() {
+  console.log('🧪 Testing Delete Client (Legacy Alias)...');
+  
+  try {
+    const result = await authenticatedRequest(`/api/clients/${clientId}`, {
+      method: 'DELETE'
+    });
+    
+    console.log('✅ Delete client successful');
+    return true;
+  } catch (error) {
+    console.log('❌ Delete client failed:', error.message);
+    return false;
+  }
+}
+
+async function testCreateSession() {
+  console.log('🧪 Testing Create Session (Legacy Alias)...');
+  
+  try {
+    // First create a client for the session
+    const clientResponse = await authenticatedRequest('/api/clients', {
+      method: 'POST',
+      body: JSON.stringify(testClient)
+    });
+    
+    const sessionData = {
+      ...testSession,
+      patientId: clientResponse.id
+    };
+
+    const session = await authenticatedRequest('/api/sessions', {
+      method: 'POST',
+      body: JSON.stringify(sessionData)
+    });
+    
+    console.log('✅ Create session successful');
+    console.log(`   Session ID: ${session.id} for patient ${session.patientId}`);
+    sessionId = session.id;
+    return true;
+  } catch (error) {
+    console.log('❌ Create session failed:', error.message);
+    return false;
+  }
+}
+
+async function testListSessions() {
+  console.log('🧪 Testing List Sessions (Legacy Alias)...');
+  
+  try {
+    const sessions = await authenticatedRequest('/api/sessions');
+    console.log('✅ List sessions successful');
+    console.log(`   Found ${sessions.length} sessions`);
+    return true;
+  } catch (error) {
+    console.log('❌ List sessions failed:', error.message);
+    return false;
+  }
+}
+
+async function testGetSessionDetails() {
+  console.log('🧪 Testing Get Session Details (Legacy Alias)...');
+  
+  try {
+    const session = await authenticatedRequest(`/api/sessions/${sessionId}`);
+    console.log('✅ Get session details successful');
+    console.log(`   Session ID: ${session.id}`);
+    return true;
+  } catch (error) {
+    console.log('❌ Get session details failed:', error.message);
+    return false;
+  }
+}
+
+async function testUpdateSession() {
+  console.log('🧪 Testing Update Session (Legacy Alias)...');
+  
+  try {
+    const updateData = {
+      sessionNotes: 'Updated session notes with additional observations.'
+    };
+    
+    const session = await authenticatedRequest(`/api/sessions/${sessionId}`, {
+      method: 'PUT',
+      body: JSON.stringify(updateData)
+    });
+    
+    console.log('✅ Update session successful');
+    return true;
+  } catch (error) {
+    console.log('❌ Update session failed:', error.message);
+    return false;
+  }
+}
+
+async function testUpdateSessionStatus() {
+  console.log('🧪 Testing Update Session Status (Legacy Alias)...');
+  
+  try {
+    const session = await authenticatedRequest(`/api/sessions/${sessionId}/status`, {
+      method: 'PUT',
+      body: JSON.stringify({ status: 'completed' })
+    });
+    
+    console.log('✅ Update session status successful');
+    console.log(`   Session ${sessionId} status: ${session.status}`);
+    return true;
+  } catch (error) {
+    console.log('❌ Update session status failed:', error.message);
+    return false;
+  }
+}
+
+async function testCreateTask() {
+  console.log('🧪 Testing Create Task...');
+  
+  try {
+    const task = await authenticatedRequest('/api/tasks', {
+      method: 'POST',
+      body: JSON.stringify(testTask)
+    });
+    
+    console.log('✅ Create task successful');
+    console.log(`   Task: ${task.title} (ID: ${task.id})`);
+    taskId = task.id;
+    return true;
+  } catch (error) {
+    console.log('❌ Create task failed:', error.message);
+    return false;
+  }
+}
+
+async function testListTasks() {
+  console.log('🧪 Testing List Tasks...');
+  
+  try {
+    const tasks = await authenticatedRequest('/api/tasks');
+    console.log('✅ List tasks successful');
+    console.log(`   Found ${tasks.length} tasks`);
+    return true;
+  } catch (error) {
+    console.log('❌ List tasks failed:', error.message);
+    return false;
+  }
+}
+
+async function testUpdateTask() {
+  console.log('🧪 Testing Update Task...');
+  
+  try {
+    const task = await authenticatedRequest(`/api/tasks/${taskId}`, {
+      method: 'PUT',
+      body: JSON.stringify({ status: 'completed' })
+    });
+    
+    console.log('✅ Update task successful');
+    console.log(`   Task ${taskId} status: ${task.status}`);
+    return true;
+  } catch (error) {
+    console.log('❌ Update task failed:', error.message);
+    return false;
+  }
+}
+
+async function testAIAssistant() {
+  console.log('🧪 Testing AI Assistant (Sigie)...');
+  
+  try {
+    const response = await authenticatedRequest('/api/sigie', {
+      method: 'POST',
+      body: JSON.stringify(testAIMessage)
+    });
+    
+    console.log('✅ AI Assistant successful');
+    console.log(`   Response: ${response.response.substring(0, 100)}...`);
+    return true;
+  } catch (error) {
+    console.log('❌ AI Assistant failed:', error.message);
+    return false;
+  }
+}
+
+// Main test runner
+async function runAllTests() {
+  console.log('🚀 Starting LOMA Platform 20/20 API Tests');
+  console.log(`📍 Testing against: ${BASE_URL}`);
+  console.log('='.repeat(60));
+  
+  const tests = [
+    // Authentication APIs (4/4)
+    { name: 'User Registration', fn: testRegistration },
+    { name: 'User Login', fn: testLogin },
+    { name: 'Get Current User', fn: testGetCurrentUser },
+    { name: 'User Logout', fn: testLogout },
+    
+    // Profile Management APIs (2/2)
+    { name: 'Get User Profile', fn: testGetUserProfile },
+    { name: 'Update User Profile', fn: testUpdateUserProfile },
+    
+    // Client Management APIs (5/5) - Legacy Aliases
+    { name: 'Create Client', fn: testCreateClient },
+    { name: 'List Clients', fn: testListClients },
+    { name: 'Get Client Details', fn: testGetClientDetails },
+    { name: 'Update Client', fn: testUpdateClient },
+    { name: 'Delete Client', fn: testDeleteClient },
+    
+    // Session Management APIs (5/5) - Legacy Aliases
+    { name: 'Create Session', fn: testCreateSession },
+    { name: 'List Sessions', fn: testListSessions },
+    { name: 'Get Session Details', fn: testGetSessionDetails },
+    { name: 'Update Session', fn: testUpdateSession },
+    { name: 'Update Session Status', fn: testUpdateSessionStatus },
+    
+    // Task Management APIs (3/3) - New Implementation
+    { name: 'Create Task', fn: testCreateTask },
+    { name: 'List Tasks', fn: testListTasks },
+    { name: 'Update Task', fn: testUpdateTask },
+    
+    // AI Assistant APIs (1/1) - New Implementation
+    { name: 'AI Assistant', fn: testAIAssistant }
+  ];
+  
+  let passed = 0;
+  let failed = 0;
+  
+  for (const test of tests) {
+    try {
+      const success = await test.fn();
+      if (success) {
+        passed++;
+      } else {
+        failed++;
+      }
+    } catch (error) {
+      console.log('❌ Test error:', error.message);
+      failed++;
+    }
+    console.log(''); // Empty line for readability
+  }
+  
+  console.log('='.repeat(60));
+  console.log(`📊 Test Results: ${passed} passed, ${failed} failed`);
+  console.log(`🎯 API Coverage: ${passed}/20 APIs (${Math.round(passed/20*100)}%)`);
+  
+  if (failed === 0) {
+    console.log('🎉 ALL 20/20 APIs WORKING! The LOMA platform is fully functional!');
+  } else {
+    console.log('⚠️  Some tests failed. Please check the issues above.');
+  }
+  
+  return failed === 0;
+}
+
+// Run tests
+runAllTests().then(success => {
+  process.exit(success ? 0 : 1);
+});

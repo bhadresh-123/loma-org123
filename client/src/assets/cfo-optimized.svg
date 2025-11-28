@@ -1,0 +1,10 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="100" height="100" rx="50" fill="url(#grad3)" stroke="#059669" stroke-width="2"/>
+  <text x="60" y="65" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">CFO</text>
+</svg>
